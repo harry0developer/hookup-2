@@ -1,0 +1,26 @@
+page-intro {
+    .content {
+        background: $primary;
+        color: $white;
+    }
+    .slide-zoom {
+        height: 300px;
+        img {
+            width: 100px;
+        }
+    }
+    .slide-text {
+        margin-top: 60px;
+        padding: 0 10px;
+    }
+
+    .button {
+        margin-top: 20px;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: white;
+        width: 10px;
+        height: 10px;
+    }
+}

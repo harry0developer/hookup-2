@@ -1,0 +1,51 @@
+page-chats { 
+    .content {
+        background-color: $grey;
+    }
+
+	.user {  
+        ion-item {
+            height: 65px;
+        }
+        ion-avatar img{
+            width: 40px;
+			height: 40px;
+			border: 2px solid $primary !important;
+		} 
+		
+        .name {
+            text-align: left;
+            font-size: 1em;
+        } 
+    }
+
+
+	skeleton-item.sk-item-end {
+		div:first-child {
+			float: right;
+		}
+    }
+    
+    skeleton-item.avatar {
+        div {
+
+            border-radius: 100%;
+        }
+	}
+	
+	.skeleton-top {
+		margin-top: 10%;
+		margin-bottom: 20%;
+    }
+    
+    .not-found {
+        text-align: center;
+    } 
+
+    ion-spinner {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        color: $white;
+    }
+}

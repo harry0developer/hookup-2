@@ -1,0 +1,38 @@
+<ion-header>
+  <div class="sub-header">
+    <ion-avatar item-left>
+      <img [src]="getProfilePic(person)">
+    </ion-avatar>
+    <h2 class="sub-header__title">{{capitalizeFirstLetter(person?.nickname)}}</h2>
+    <ion-buttons end> 
+      <button ion-button icon-only clear (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </div>
+</ion-header> 
+
+<ion-content padding-top #content>
+  <ion-list *ngIf="!isLoading" no-lines>
+    <chat-bubble 
+                *ngFor="let msg of messageList"
+                [text]="msg.text"
+                [timestamp]="getMomentFromNow(msg.timestamp)"
+                from="{{msg.from === profile.uid ? 'me' : 'other'}}">
+    </chat-bubble> 
+  </ion-list>
+
+  <div class="no-chats" *ngIf="!messageList || messageList.length < 1">
+    <i class="fa fa-comment"></i>
+    <p>You do not have any chats yet.</p>
+  </div> 
+</ion-content>
+
+<ion-footer>
+  <ion-item no-lines> 
+    <ion-input type="text" style="text-transform: capitalize;" placeholder="Type message..." [(ngModel)]="inputMessage" (keyup.enter)="sendMessage()"></ion-input>
+    <button ion-button clear item-right icon-only (focus)="scrollToEnd()" (click)="sendMessage()">
+      <ion-icon name="send" color="primary"></ion-icon>
+    </button>
+  </ion-item> 
+</ion-footer>

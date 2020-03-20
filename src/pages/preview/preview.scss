@@ -1,0 +1,58 @@
+page-preview {
+ 
+    .scroll-content {
+        margin-top: 0 !important;
+    } 
+    .toolbar-background {
+        background-color: transparent !important;
+    }
+
+    .bar-button-default-md,.bar-button-default-ios, .toolbar-title-md, .toolbar-title-ios{
+        color: $primary;
+    }
+
+    .header-md::after {
+        background-image: none !important;
+    }
+    .header-ios .toolbar-ios:last-child .toolbar-background-ios {
+        border-width: 0;
+    }
+
+    .slide-zoom {
+        height: 100%;
+    }
+
+    .controls {
+        z-index: 9999;
+        position: absolute;
+        bottom: 10%;
+        width: 100%;
+        text-align: center;
+        .button {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        .button.next {
+            margin-left: 14px;
+            
+        }
+        .button.prev {
+            margin-right: 14px;
+        }
+
+        .button.next, .button.prev {
+            height: 40px;
+            width: 40px;
+        }
+    }
+
+    .swiper-pagination-bullet {
+        background: $primary;
+        width: 30px;
+        height: 2px;
+        border-radius: 0;
+        
+      }
+}

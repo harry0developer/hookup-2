@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-buttons end>
+    <button ion-button icon-only clear (click)="dismiss()">
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager loop [initialSlide]="active" (ionSlideDidChange)="slideChanged()">
+    <ion-slide *ngFor="let img of images; let i=index">
+      <img [src]="img.path" [alt]="img.url"> 
+    </ion-slide> 
+  </ion-slides> 
+
+  <div class="controls">
+    <button ion-button icon-only color="light" class="prev" (click)="previousSlide()">
+      <i class="fa fa-chevron-left"></i>
+    </button>
+    <button ion-button icon-only (click)="makeProfilePicture()">
+      <i class="fa fa-user"></i>
+    </button>
+    <button ion-button icon-only (click)="deleteImage()">
+      <i class="fa fa-trash"></i>
+    </button>
+    <button ion-button icon-only  color="light" class="next" (click)="nextSlide()">
+      <i class="fa fa-chevron-right"></i>
+    </button>
+  </div>
+
+  
+
+</ion-content>

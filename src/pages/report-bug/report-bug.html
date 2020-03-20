@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="dark"> 
+    <ion-title>Report an issue</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only clear (click)="dismiss()">
+        Cancel
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list> 
+    <ion-item>
+      <ion-label floating>Category</ion-label>
+      <ion-select [(ngModel)]="issue.category">
+        <ion-option value="bug">Bug</ion-option>
+        <ion-option value="general">General</ion-option>
+        <ion-option value="network">Network</ion-option>
+        <ion-option value="usability">Usability</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-textarea [(ngModel)]="issue.description" name="description"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <div class="btn">
+    <button ion-button block round [disabled]="!issue.category || !issue.description" (click)="submitFeedback()">Submit Feedback</button>
+  </div>
+</ion-content>

@@ -1,0 +1,27 @@
+page-network-error {
+
+    .content {
+        background-color: $primary;
+    }
+
+    .error {
+        margin-top: 40%;
+        text-align: center;
+        padding: 18px;
+    }
+    img {
+        width: 100px;
+        margin-bottom: 10%;
+    }
+    h2 {
+        font-size: 1.4em;
+        color: $white;
+    }
+    p {
+        font-size: 1em;
+        color: $white;
+    }
+    .retry-btn {
+        margin: 10% 20%;
+    }
+}

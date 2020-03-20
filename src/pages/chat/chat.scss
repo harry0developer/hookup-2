@@ -1,0 +1,137 @@
+page-chat {
+    .content {
+        // background-image: url('../../assets/bg-1.png');
+        // background-size: 200px;
+        background: $grey;
+    }
+    
+    .toolbar-ios-dark .bar-button-default-ios,
+    .toolbar-md-dark .bar-button-default-md  {
+        color: #222;
+    } 
+    ion-header {
+        background-color: $white;
+    }
+
+    .sub-header {
+        margin: 24px 0 10px 0;
+        &__title {
+            text-align: left;
+            font-size: 18px;
+            margin: 10px 0 0 20px ;
+            position: absolute;
+            display: inline;
+        }
+    } 
+
+    .item-ios [item-start], .item-md [item-start]{
+        margin: 8px 2px 8px 0;
+    }
+
+    .toolbar-background{
+        background-color: $white !important;
+        border: none !important;
+    } 
+
+    .list-ios {
+        margin: 0;
+    }
+
+    .bar-buttons-ios[end] {
+        ion-icon {
+            font-weight: bold;
+        }
+    }
+
+    .bar-buttons-ios[end] { 
+        ion-icon {
+            margin-bottom: 10px;
+        }
+    }
+
+    ion-buttons {
+        display: inline;
+        position: absolute;
+        right: 0;
+    }
+
+    ion-avatar {
+        margin-left: 20px;
+        display: inline;
+        img {
+            display: inline;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #db4056;
+            border-radius: 50%;
+        }
+    }
+
+    skeleton-item.right  {
+        div{
+            border-radius: 40px;
+            float: right;
+            margin: 10px;
+        }
+    }
+    skeleton-item.left  {
+        div{
+            border-radius: 40px;
+            float: left;
+            margin: 10px;
+        }
+    }
+    skeleton-item {
+        margin: 20px;
+    }
+    
+    .message-control {
+        border-top: 2px solid $dark-grey;
+    }
+
+ 
+    .profile-pic {
+        margin-top: 20px;
+        width: 40px;
+        height: 40px;
+        border: 1px solid $white;
+        border-radius: 50%;
+    }
+
+    ion-avatar img {
+        width: 40px;
+        height: 40px;
+    }
+
+    ion-footer {
+        border-top: 2px solid $grey;
+        ion-item {
+            padding-left: 0 !important;
+        }
+        .item-inner {
+            border-radius: 10px;
+            margin: 0 5px;
+        }
+        ion-input {
+            font-size: 14px
+        }
+        button {
+            font-weight: bold;
+        }
+        .text-input {
+            color: $black;
+        }
+    }
+
+    .no-chats {
+        text-align: center;
+        i {
+            font-size: 21px;
+            margin-top: 50%;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 12px;
+        }
+    }
+}

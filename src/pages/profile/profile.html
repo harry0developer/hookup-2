@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar color="dark"> 
+    <ion-title>Profile</ion-title> 
+  </ion-navbar>
+</ion-header>
+
+<ion-content> 
+
+  <div class="profile" *ngIf="profile">
+    <img class="profile-image animated slideInDown" [src]="getProfilePicture()">
+    <div class="name animated slideInLeft">
+      <p class="nickname">{{capitalizeFirstLetter(profile?.nickname)}}
+        <ion-badge primary>{{profile?.age}}</ion-badge> 
+      </p>
+      <p class="userType">{{capitalizeFirstLetter(profile?.userType)}}</p>
+    </div> 
+    <div class="stats animated bounceIn">
+      <ion-badge primary >{{profile?.gender}}</ion-badge> 
+      <ion-badge primary>{{profile?.race}}</ion-badge> 
+      <ion-badge primary>{{profile?.bodyType}}</ion-badge> 
+    </div>
+  </div>
+
+  <ion-item-divider color="light">My photos</ion-item-divider>
+
+  <div *ngIf="images && !isLoading">
+    <div class="pins" padding>
+      <div class="animated fadeIn " [ngClass]="{'pin': images.length > 2, 'pin-more': images.length <= 2 }" 
+          *ngFor="let image of images" (tap)="previewImage(image)">
+        <img [src]="image.path" alt="">
+      </div>
+    </div>
+  </div>
+
+  <ion-grid *ngIf="isLoading">
+    <ion-row>
+      <ion-col col-6>
+        <skeleton-item width="100%" height="240px"></skeleton-item>
+      </ion-col>
+      <ion-col col-6>
+        <skeleton-item width="100%" height="240px"></skeleton-item>
+      </ion-col>
+      <ion-col col-6>
+        <skeleton-item width="100%" height="240px"></skeleton-item>
+      </ion-col>
+      <ion-col col-6>
+        <skeleton-item width="100%" height="240px"></skeleton-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="no-images" *ngIf="(!images || images.length < 1) && !isLoading">
+    <p>You have not uploaded photos</p>
+  </div>
+  
+  <ion-fab bottom right (click)="selectPhoto()">  
+    <button ion-fab>
+      <i class="fa fa-plus"></i>
+    </button>
+  </ion-fab>
+   
+
+</ion-content>
+  

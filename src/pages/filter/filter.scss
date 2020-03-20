@@ -1,0 +1,28 @@
+page-filter {
+
+    ion-item-divider {
+        span {
+            font-weight: bold;
+            font-size: 16px;
+        }
+    }
+
+    .summary {
+        padding: 20px;
+        span {
+            text-decoration: underline $primary;
+        }
+        p {
+            font-size: 16px;
+            border-left: 4px solid $primary;
+            padding-left: 10px;
+        }
+    }
+    .filter-controls {
+        width: 200px;
+        margin: 0 auto;
+        .button {
+            height: 40px;
+        }
+    }
+}

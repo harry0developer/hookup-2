@@ -1,0 +1,80 @@
+page-profile {
+  .content {
+		background-color: $grey;
+  }
+  
+  .profile {
+    text-align: center;
+    background-image: url('../../assets/bg-1.png');
+    padding: 8% 0;
+    .profile-image {
+      border-radius: 100px;
+      border: 2px solid $primary;
+      width: 60px;
+      height: 60px;
+      margin: 20px 20px 0 20px;
+    } 
+    .nickname {
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-bottom: 0;
+
+    }
+    .userType {
+      margin-top: 0;
+      font-size: 1em;
+    }
+  } 
+  .pins {
+    column-count: 2;
+    .pin {
+      display: inline-block;
+      margin-bottom: 8px;
+      img {
+        border-radius: 4px;
+      }
+    }
+    .pin-more {
+      img {
+        border-radius: 4px;
+      }
+    }
+  }
+
+  .stats {
+    margin: 0 auto;
+    .badge {
+      padding: 4px;
+      margin: 10px 4px;
+      width: 70px;
+    }
+  }
+ 
+ 
+  .star-icon {
+    font-size: 12px !important;
+    color: $primary !important;
+  }
+
+  .star-icon::before {
+    color: $primary !important;
+    font-size: 12px !important;
+  } 
+
+  .tags {
+    display: block;
+    margin: 10px 0
+  }
+
+  ion-item-divider {
+    ion-label {
+      font-weight: bold;
+    }
+  }
+  .no-images {
+    text-align: center;;
+    padding: 20px;
+    font-size: 16px;
+  }
+  
+}

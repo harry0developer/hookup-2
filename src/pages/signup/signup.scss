@@ -1,0 +1,110 @@
+page-signup {
+    .content {
+        background-color: white;
+    }
+
+    .brand { 
+        text-align: center;
+        margin-top: 15%;
+        margin-bottom: 10%;
+        .logo {
+            width: 70px;
+        }
+    }
+
+    .toolbar-background {
+        background: white !important;
+    } 
+
+    .header::after {
+        display: none !important; 
+    }
+ 
+    .round-input, ion-item.item.item-input.round-input {
+        border: 1px solid;
+        border-radius: 40px !important;
+    }
+
+    ion-item {
+        height: 40px;
+    }
+
+    .grid {
+        padding: 0;
+        margin: 0;
+    }
+ 
+
+    ion-datetime {
+        position: absolute;
+        left: 40px;
+        width: 100%;
+    } 
+
+    ion-item.round-input{
+        border-radius: 40px !important;
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    ion-row {
+        width: 90%; 
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    
+
+    ion-item.item.item-input {
+        border-radius: 40px !important;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    .country-code {
+        border-right: 1px solid;
+        .item-inner {
+            padding-left: 16px;
+        }
+    }
+    .email-address {
+        ion-label {
+            padding-left: 16px;
+        }
+    }
+    ion-label i{ 
+        color: $primary;
+    }
+
+    .buttons-group { 
+        text-align: center;
+        margin: 0 10px;
+        .button {
+            width: 200px;
+            padding: 20px 0;
+        }
+    } 
+
+    .col {
+        padding: 0 !important;
+    }
+ 
+    .text-input-md {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .phone-number {
+        padding-left: 16px !important;
+    }
+ 
+    p.terms {
+        color: $primary;
+        font-size: 1em;
+        text-align: center;
+        margin-top: 40px;
+        position: relative;
+        bottom: 0;
+    }
+}

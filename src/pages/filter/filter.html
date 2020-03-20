@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Filter</ion-title>
+    <ion-buttons end> 
+      <button ion-button icon-only clear (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar> 
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card>
+      <ion-item-divider color="light">
+        <span>Race</span> 
+        <ion-badge item-end>{{ capitalizeFirstLetter(filter?.race) }}</ion-badge>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label>Select race</ion-label>
+        <ion-select [(ngModel)]="filter.race">
+          <ion-option value="all">All</ion-option>
+          <ion-option value="black">Black</ion-option>
+          <ion-option value="coloured">Coloured</ion-option>
+          <ion-option value="indian">Indian</ion-option>
+          <ion-option value="white">White</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+  <ion-card>
+    <ion-item-divider color="light">
+      <span>Age</span> 
+      <ion-badge item-end>{{filter?.age}} years</ion-badge>
+    </ion-item-divider>
+    <ion-item>
+      <ion-range [(ngModel)]="filter.age"  min="18" max="99" step="1" pin="true">
+        <ion-label range-left>18 yrs</ion-label>
+        <ion-label range-right>99 yrs</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-item-divider color="light">
+      <span>Distance</span> 
+      <ion-badge item-end>{{filter?.distance}} km</ion-badge>
+    </ion-item-divider>
+    <ion-item>
+      <ion-range [(ngModel)]="filter.distance"  min="1" max="100" step="1" pin="true">
+        <ion-label range-left>1 km</ion-label>
+        <ion-label range-right>100 km</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-card>
+
+  <!-- <div class="summary">
+    <p>
+      I want a <span>{{filter.age}}</span> year old, <span>{{filter.race}}</span> male/female within <span>{{filter.distance}}</span> km radius</p>
+  </div> -->
+</ion-list>
+
+  <div class="filter-controls"> 
+    <button block small ion-button round (click)="applyFilter()">Apply filter</button>
+  </div>
+</ion-content>

@@ -1,0 +1,42 @@
+page-home {
+
+    .content {
+        background-image: url('../../assets/bg-1.png');
+    }
+    .brand { 
+        text-align: center;
+        margin: 40% 0;
+        .logo {
+            width: 100px;
+        }
+    }
+
+    .buttons-group {
+        position: absolute;
+        bottom: 40px;
+        text-align: center;
+        margin: 0 10px;
+        .button {
+            width: 200px;
+            padding: 20px 0;
+        }
+    }
+    
+    .action-sheet-group:first-child{
+        border-radius: 10px !important;
+        margin: 4px;
+    }
+    
+    .action-sheet-icon {
+        font-size: 1em !important;
+    }
+    
+    .terms {
+        margin-top: 40px;
+        .button {
+            font-size: .8em;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+    } 
+ } 

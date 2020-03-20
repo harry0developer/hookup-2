@@ -1,0 +1,249 @@
+ <ion-header>
+  <ion-navbar>
+    <ion-title>About yourself</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides>
+    <ion-slide> <!-- Intro slide -->
+      <ion-card>
+        <img src="assets/icon/info.png" alt="">
+        <h2>Please tell us a bit about yourself.</h2>
+        <p>This will help us filter users which match your preferences and improve your experience</p>
+        <h3 class="questions-count">Only 6 questions</h3>
+      </ion-card>
+
+      <div padding class="controls">
+        <button ion-button block small round icon-end (click)="nextSlide()">
+          Lets go
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      </div>
+    </ion-slide>
+
+    <ion-slide> <!-- user type slide-->
+      <ion-card>
+        <img src="assets/icon/info.png" alt="">
+        <ion-list radio-group [(ngModel)]="data.userType">
+          <ion-label stacked>
+            <h2>What's do you want to register as?</h2>
+            <h2 class="choice">{{data.userType}}</h2>
+          </ion-label> 
+          <ion-item no-lines >
+            <ion-label>
+              Buyer
+            </ion-label>
+            <ion-radio mode="md" value="buyer"></ion-radio>
+          </ion-item>
+          <ion-item no-lines>
+            <ion-label>
+              Seller
+            </ion-label>
+            <ion-radio mode="md" value="seller"></ion-radio>
+          </ion-item>
+        </ion-list>
+        <div class="slides-counter">{{getSlideNumber()}}</div>
+      </ion-card>
+      <div padding class="controls">
+        <button ion-button block small round icon-end [disabled]="!data.userType" (click)="nextSlide()">
+          Next
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      </div>
+      <div padding class="controls">
+        <button ion-button block small clear icon-start (click)="previousSlide()">
+          <ion-icon name="arrow-back"></ion-icon>
+          Prev
+        </button>
+      </div>
+    </ion-slide>
+
+
+    <ion-slide> <!-- Gender slide -->
+      <ion-list radio-group [(ngModel)]="data.gender">
+        <ion-card>
+          <img src="assets/icon/gender.png" alt="">
+          <ion-label stacked>
+            <h2>What's your gender?</h2>
+            <h2 class="choice">{{data.gender}}</h2>
+          </ion-label> 
+
+          <ion-item>
+            <ion-label>
+              Male
+            </ion-label>
+            <ion-radio mode="md" value="male"></ion-radio>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label>
+              Female
+            </ion-label>
+            <ion-radio mode="md" value="female"></ion-radio>
+          </ion-item>  
+
+          <ion-item>
+            <ion-label>
+              Other
+            </ion-label>
+            <ion-radio mode="md" value="other"></ion-radio>
+          </ion-item>
+          <div class="slides-counter">{{getSlideNumber()}}</div>
+        </ion-card>
+        <div padding class="controls">
+          <button ion-button block small round icon-end [disabled]="!data.gender" (click)="nextSlide()">
+            Next
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </div>
+        <div padding class="controls">
+          <button ion-button block small clear icon-start (click)="previousSlide()">
+            <ion-icon name="arrow-back"></ion-icon>
+            Prev
+          </button>
+        </div>
+      </ion-list>
+    </ion-slide>
+
+    <ion-slide> <!-- Age slide -->
+      <ion-card>
+        <img src="assets/icon/age.png" alt="">
+        <ion-label stacked>
+          <h2>What's your age?</h2>
+          <h2 class="choice">{{data.age || 18}} years</h2>
+        </ion-label> 
+        <ion-item>
+          <ion-range [(ngModel)]="data.age"  min="18" max="99" step="1" pin="true">
+            <ion-label range-left>18 yrs</ion-label>
+            <ion-label range-right>99 yrs</ion-label>
+          </ion-range>
+        </ion-item>
+        <div class="slides-counter">{{getSlideNumber()}}</div>
+      </ion-card>
+      <div padding class="controls">
+        <button ion-button block small round icon-end [disabled]="!data.age" (click)="nextSlide()">
+          Next
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      </div>
+      <div padding class="controls">
+        <button ion-button block small clear icon-start (click)="previousSlide()">
+          <ion-icon name="arrow-back"></ion-icon>
+          Prev
+        </button>
+      </div>
+    </ion-slide>
+
+
+    <ion-slide> <!-- Race slide -->
+      <ion-list radio-group [(ngModel)]="data.race">
+        <ion-card>
+          <img src="assets/icon/race.png" alt="">
+          <ion-label stacked>
+            <h2>What's your race?</h2>
+            <h2 class="choice">{{data.race}}</h2>
+          </ion-label> 
+
+          <ion-item>
+            <ion-label>Black/African</ion-label>
+            <ion-radio mode="md" value="black"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Coloured</ion-label>
+            <ion-radio mode="md" value="coloured"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Indian</ion-label>
+            <ion-radio mode="md" value="indian"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>White</ion-label>
+            <ion-radio mode="md" value="white"></ion-radio>
+          </ion-item>
+          <div class="slides-counter">{{getSlideNumber()}}</div>
+        </ion-card>
+        <div padding class="controls">
+          <button ion-button block small round icon-end [disabled]="!data.race" (click)="nextSlide()">
+            Next
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </div>
+        <div padding class="controls">
+          <button ion-button block small clear icon-start (click)="previousSlide()">
+            <ion-icon name="arrow-back"></ion-icon>
+            Prev
+          </button>
+        </div>
+      </ion-list>
+    </ion-slide>
+
+
+    <ion-slide> <!-- Body type slidfe-->
+      <ion-list radio-group [(ngModel)]="data.bodyType">
+        <ion-card>
+          <img *ngIf="data.gender !== 'other'" src="assets/icon/{{data.gender}}-body.png" alt="">
+          <img *ngIf="data.gender === 'other'" src="assets/icon/male-body.png" alt="">
+          <ion-label stacked>
+            <h2>What's your body type?</h2>
+            <h2 class="choice">{{data.bodyType}}</h2>
+          </ion-label> 
+          <ion-item>
+            <ion-label>Skinny</ion-label>
+            <ion-radio mode="md" value="skinny"></ion-radio>
+          </ion-item> 
+          <ion-item *ngIf="data.gender === 'female'">
+            <ion-label>Thick</ion-label>
+            <ion-radio mode="md" value="thick"></ion-radio>
+          </ion-item> 
+          <ion-item *ngIf="data.gender === 'male'">
+            <ion-label>Muscular</ion-label>
+            <ion-radio mode="md" value="muscular"></ion-radio>
+          </ion-item> 
+          <ion-item>
+            <ion-label>Fat</ion-label>
+            <ion-radio mode="md" value="fat"></ion-radio>
+          </ion-item> 
+          <div class="slides-counter">{{getSlideNumber()}}</div>
+        </ion-card>
+        <div padding class="controls">
+          <button ion-button block small round icon-end [disabled]="!data.bodyType" (click)="nextSlide()">
+            Next
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </div>
+
+        <div padding class="controls">
+          <button ion-button block small clear icon-start (click)="previousSlide()">
+            <ion-icon name="arrow-back"></ion-icon>
+            Prev
+          </button>
+        </div>
+      </ion-list>
+    </ion-slide>
+
+    <ion-slide> <!-- Height Slide-->
+      <ion-card>
+        <img src="assets/icon/height.png" alt="">
+        <ion-label stacked>
+          <h2>What's your height?</h2>
+          <h2 class="choice">{{data.height || 0}} cm</h2>
+        </ion-label> 
+        <ion-item>
+          <ion-range [(ngModel)]="data.height"  min="60" max="250" step="1" pin="true">
+            <ion-label range-left>60 cm</ion-label>
+            <ion-label range-right>250 cm</ion-label>
+          </ion-range>
+        </ion-item>
+        <div class="slides-counter">{{getSlideNumber()}}</div>
+      </ion-card>
+      <div padding class="controls" >
+        <button ion-button block small round icon-end [disabled]="!data.height" (click)="completeSignup()">
+          Done
+          <ion-icon name="checkmark"></ion-icon>
+        </button>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+ 

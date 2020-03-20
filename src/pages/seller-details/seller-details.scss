@@ -1,0 +1,166 @@
+ page-seller-details {  
+
+  .bar-button-ios[icon-only]{
+    padding: 0;
+    color: $white;
+    width: 1.6em ;
+    font-size: 1.6em ;
+  }
+
+  .bar-button-md[icon-only]{
+    padding: 0;
+    color: $white;
+    width: 1.6em;
+    font-size: 1.2em;
+  }
+
+  .scroll-content {
+      margin-top: 0 !important;
+  } 
+  .toolbar-background {
+      background-color: transparent !important;
+  }
+
+  .bar-button-default-md,.bar-button-default-ios, .toolbar-title-md, .toolbar-title-ios{
+    color: $primary;
+  }
+
+  .header-md::after {
+      background-image: none !important;
+  }
+  .header-ios .toolbar-ios:last-child .toolbar-background-ios {
+      border-width: 0;
+  }
+
+  .swiper-pagination-bullet-active {
+      background: white;
+  } 
+  .swiper-slide img {
+    width: 100%;;
+  }
+  
+  .star-icon {
+      font-size: 1.2em !important;
+  }
+
+  .star-icon::before {
+      color: $primary !important;
+      font-size: 1em !important;
+  } 
+
+  .tags {
+      display: block;
+      margin: 10px 0
+  }
+
+  .tags .badge {
+    background-color: $dark-grey !important;
+  }
+ 
+  .swiper-pagination-bullet {
+    background: $primary;
+    width: 30px;
+    height: 2px;
+    border-radius: 0;
+    
+  }
+
+  .slide-zoom {
+    height: 100%;
+  }
+
+  ion-slides {
+    height: 78%;
+  }
+
+  .swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: 3%;
+  }
+
+  .swiper-pagination-bullet {
+    background-color: #fff;
+  }
+
+  .profile {
+    text-align: center;
+    padding: 0 20px;
+    margin-top: 20px;
+    h2 {
+      margin-top: 0;
+    }
+    p {
+      margin-top: 0;
+      padding-top: 2px;
+    }
+    i {
+      color: $primary;
+    }
+  }
+
+  .btn-group {
+    text-align: center;
+    margin: 20px 0;
+    .button {
+      border-radius: 100%;
+      height: 50px;
+      width: 50px;
+    }
+  }
+
+  .distance {
+    padding-top: 10px;
+    span {
+        font-weight: bold;
+        color: $primary;
+    }
+  }
+
+  .location-error{
+    color: $primary;
+    i {
+        padding-right: 4px;;
+    }
+  }
+
+  .distance {
+    font-weight: bold;
+    color: $primary;
+  }
+
+
+  ion-fab[bottom] {
+    bottom: 110px;
+  }
+
+  .no-photos {
+    height: 450px;
+    text-align: center;
+    padding-top: 40%;
+    background-color: #ff7a8d;
+    img {
+      width: 120px;
+    }
+    h2 {
+      color: $white;
+      font-weight: 500;
+      font-size: 1.2em;
+    }
+  }
+
+  .skeleton {
+    .content {
+      padding: 20px;
+    }
+  }
+
+  skeleton-item {
+    div {
+      margin: 0 auto;
+    }
+  }
+  .skeleton {
+    .content {
+      padding: 0;
+    }
+  }
+}

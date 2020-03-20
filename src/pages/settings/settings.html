@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="dark"> 
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item-divider color="light">Preference</ion-item-divider>
+    <ion-item >
+      <ion-icon name="compass" item-start></ion-icon>
+      Allow location
+      <i class="fa fa-chevron-right" item-end></i>
+    </ion-item>
+    
+    <ion-item-divider color="light">Account</ion-item-divider>
+
+    <ion-item (tap)="presentDeactivateAccountActionsheet()">
+      <ion-icon name="lock" item-start></ion-icon>
+      Deactivate Account
+      <i class="fa fa-chevron-right" item-end></i>
+    </ion-item>
+    
+    <ion-item-divider color="light">Support</ion-item-divider>
+
+    <ion-item (tap)="reportBug()">
+      <ion-icon name="bug" item-start></ion-icon>
+      Report a problem
+      <i class="fa fa-chevron-right" item-end></i>
+    </ion-item>
+
+    <ion-item (tap)="showTermsAndConditions()">
+      <ion-icon name="document" item-start></ion-icon>
+      Privary policy
+      <i class="fa fa-chevron-right" item-end></i>
+    </ion-item>
+ 
+  </ion-list>
+
+  <div class="logout">
+    <button ion-button round small block (click)='logout()'>Logout</button>
+  </div>
+</ion-content>

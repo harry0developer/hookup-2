@@ -1,0 +1,15 @@
+<!-- <ion-item text-wrap >
+  <div class="bubble" [class.bubble__end]="position === 'end'" [class.bubble__start]="position === 'start'">
+    {{text}} 
+    <div class="timestamp">{{timestamp}}</div>
+  </div>
+</ion-item> -->
+
+<div class="chat">
+  <div class="messages" [class.mine]="fromMe()" [class.yours]="!fromMe()">
+    <div class="message last">
+      {{text}}
+     </div>
+     <span class="timestamp">{{timestamp}}</span>
+  </div> 
+</div>

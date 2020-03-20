@@ -1,0 +1,71 @@
+page-setup {
+
+    .content {
+        background-color: $light;
+    }
+    // .toolbar-background {
+    //     background: $light !important;
+    // } 
+    // .toolbar-title {
+    //     color: white !important;
+    // }
+
+    // .header::after {
+    //     display: none !important; 
+    // }
+
+ 
+    .toolbar-title, .back-button.show-back-button {
+        color: $white;
+    }
+ 
+    ion-card{
+        position: relative;
+        min-height: 320px;
+        padding: 20px 20px 30px 20px;
+        h2 {
+            padding-bottom: 10px;
+        }
+        img {
+            margin: 0 auto;
+            padding-bottom: 20px;
+        }
+    }
+
+    .radio-ios .radio-icon {
+        border: 1px solid;
+        padding: 10px;
+        border-radius: 100px;
+    }
+
+    h2.choice {
+        font-weight: bold;
+        line-height: 1;
+    }
+   
+    h3.questions-count {
+        font-size: 1.4em;
+        margin-top: 30px;
+        font-weight: bold;
+    }
+    .slides-counter {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-weight: bold;
+    }
+
+    .controls {
+        .button {
+            width: 200px;
+            padding: 20px 0;
+            margin: 0 auto;
+        }
+    }
+
+
+    // .radio-ios .radio-icon {
+    //     width: 0;
+    // }
+ 
+}

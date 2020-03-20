@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="dark"> 
+    <ion-title>Chats</ion-title>
+  </ion-navbar>
+  <ion-toolbar >
+    <ion-searchbar
+      [formControl]="searchControl"
+      (ionChange)="onSearchInput()"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="searching" class="spinner-container">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <ion-list *ngIf="!isLoading && !searching" class="user" [@listAnimation]="users.length">
+    <ion-card *ngFor="let user of users">
+      <ion-item (tap)="viewUserProfile(user)">
+        <ion-avatar item-start>
+          <img [src]="getProfilePicture(user)">
+        </ion-avatar>
+        <h2 class="name">
+          {{capitalizeFirstLetter(user?.nickname)}} 
+        </h2> 
+        <p item-end>
+          <i class="fa fa-chevron-right"></i>
+        </p>
+      </ion-item>
+    </ion-card>
+
+    <ion-card *ngIf="users.length < 1">
+      <ion-item>
+        <p class="not-found">No users found</p>      
+      </ion-item>
+    </ion-card>
+  </ion-list>   
+</ion-content>
