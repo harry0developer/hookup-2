@@ -28,18 +28,22 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    const profile = this.dataProvider.getItemFromLocalStorage(STORAGE_KEY.user);
-    if (profile && profile.uid) {
-      this.navigate(profile);
+    this.profile = this.dataProvider.getItemFromLocalStorage(STORAGE_KEY.user);
+    if (this.profile && this.profile.uid) {
+      this.navigate();
     }
   }
 
-  navigate(user: User) {
-    this.ionEvents.publish(EVENTS.loggedIn, { user });
-    user.userType === USER_TYPE.buyer ? this.navCtrl.setRoot(SellersPage, { user }) : this.navCtrl.setRoot(DashboardPage, { user })
+  navigate() {
+    this.ionEvents.publish(EVENTS.loggedIn, this.profile);
+    this.profile.userType === USER_TYPE.buyer ?
+      this.navCtrl.setRoot(SellersPage, { user: this.profile }) :
+      this.navCtrl.setRoot(DashboardPage, { user: this.profile });
   }
 
   loginWithEmailAddress() {
+    console.log('Pushing login');
+
     this.navCtrl.push(LoginPage, { loginType: 'emailAddress' });
   }
 

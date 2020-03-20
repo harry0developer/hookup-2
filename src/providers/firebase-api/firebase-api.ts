@@ -120,13 +120,13 @@ export class FirebaseApiProvider {
   // }
 
   getUserChat() {
-    firebase.database().ref(COLLECTION.chats).child(this.profile.uid).on('value', snap => {
-      snap.forEach(u => {
-        firebase.database().ref(COLLECTION.users).child(u.key).on('value', uSnap => {
-          this.users.push(uSnap.val());
-        });
-      });
-    });
+    // firebase.database().ref(COLLECTION.chats).child(this.profile.uid).on('value', snap => {
+    //   snap.forEach(u => {
+    //     firebase.database().ref(COLLECTION.users).child(u.key).on('value', uSnap => {
+    //       this.users.push(uSnap.val());
+    //     });
+    //   });
+    // });
   }
 
   filterItems(searchTerm) {

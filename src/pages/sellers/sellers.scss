@@ -1,41 +1,4 @@
 page-sellers {   
-    .item-ios, .item-md  {
-        background-color:rgba($color: $primary, $alpha: .1)
-    }
-
-    .header-md::after {
-        display: none;
-    }
-
-    ion-header {
-        background: $primary;
-    }
-
-    .bar-button-default-md, .bar-button-default-ios {
-        color: $white;
-    }
-
-    .toolbar-background {
-        background-color: $primary;
-    }
-  
-    .sub-header {
-        padding-bottom: 6px; 
-        background:  url('/assets/imgs/header-bg.svg') no-repeat;
-        background-size: cover;
-        background-position-x: center;
-        background-color: $white;
-        &__title {
-            text-align: left;
-            font-size: 21px;
-            margin-left: 20px;
-            margin-top: 0;
-        }
-        h2 {
-            color: $white;
-        }
-    } 
-
     .item-ios [item-start], .item-md [item-start]{
         margin: 8px 2px 8px 0;
     }

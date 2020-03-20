@@ -1,11 +1,12 @@
 page-profile {
   .content {
-		background-color: $grey;
+		background-color: $white;
   }
   
   .profile {
     text-align: center;
-    background-image: url('../../assets/bg-1.png');
+    // background-image: url('../../assets/bg-1.png');
+    background-color: $white;
     padding: 8% 0;
     .profile-image {
       border-radius: 100px;

@@ -1,5 +1,8 @@
 <ion-header>
-  <ion-navbar color="dark"> 
+  <ion-navbar color="white"> 
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button> 
     <ion-title>Chats</ion-title>
   </ion-navbar>
   <ion-toolbar >
@@ -9,6 +12,25 @@
     ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
+
+<!-- <ion-header>
+  <ion-navbar color="white"> 
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button> 
+  </ion-navbar> 
+  <div class="sub-header">
+    <h2 class="sub-header__title">Chats</h2>
+    <ion-toolbar >
+      <ion-searchbar
+        [formControl]="searchControl"
+        (ionChange)="onSearchInput()"
+      ></ion-searchbar>
+    </ion-toolbar>
+  </div>  
+</ion-header>  -->
+
+
 
 <ion-content>
 

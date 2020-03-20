@@ -37,8 +37,6 @@ export class LoginPage {
   showPass = false;
   showOTPPage = false;
   verificationId: string = '';
-
-  // user: any;
   applicationVerifier: any;
   windowRef: any;
   verificationCode: string;
@@ -95,8 +93,6 @@ export class LoginPage {
         lat: res.coords.latitude,
         lng: res.coords.longitude
       };
-      console.log(res);
-
       this.updateUserProfile(this.profile, loc);
       this.navigate();
     }).catch(err => {
@@ -118,7 +114,7 @@ export class LoginPage {
 
   navigate() {
     this.dataProvider.addItemToLocalStorage(STORAGE_KEY.user, this.profile);
-    this.ionEvents.publish(EVENTS.loggedIn, { user: this.profile });
+    this.ionEvents.publish(EVENTS.loggedIn, this.profile);
     this.profile.userType === USER_TYPE.buyer ? this.navCtrl.setRoot(SellersPage, { user: this.profile }) : this.navCtrl.setRoot(DashboardPage, { user: this.profile })
   }
 

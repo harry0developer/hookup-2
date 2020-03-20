@@ -14,6 +14,8 @@ import { DataProvider } from '../providers/data/data';
 import { NETWORK, STORAGE_KEY, USER_TYPE, EVENTS } from '../utils/consts';
 import { IntroPage } from '../pages/intro/intro';
 import { AuthProvider } from '../providers/auth/auth';
+import { SettingsPage } from '../pages/settings/settings';
+import { ChatsPage } from '../pages/chats/chats';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,7 +25,7 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{ title: string, component: any }>;
+  pages: any
   networkModal;
   profile: User;
   constructor(
@@ -38,13 +40,13 @@ export class MyApp {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Sellers', component: SellersPage },
-      { title: 'Dashboard', component: DashboardPage },
-      { title: 'Chats', component: ChatPage },
-      { title: 'Profile', component: ProfilePage }
-    ];
+    this.pages = {
+      sellersPage: SellersPage,
+      dashboardPage: DashboardPage,
+      profilePage: ProfilePage,
+      chatsPage: ChatsPage,
+      settingsPage: SettingsPage,
+    }
 
   }
 
@@ -58,10 +60,10 @@ export class MyApp {
       if (a === 0) {
         this.openIntroPage();
       }
+      this.profile = this.dataProvider.getItemFromLocalStorage(STORAGE_KEY.user);
       this.ionEvents.subscribe(EVENTS.loggedIn, (user) => {
         this.profile = user;
         console.log(user);
-
       });
       this.network.onchange().subscribe(connection => {
         if (connection.type.toLowerCase() === NETWORK.offline) {

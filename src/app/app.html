@@ -2,19 +2,23 @@
   <ion-content class="user-profile">
     <div *ngIf="profile" class="profile">
       <img [src]="getUserProfile(profile)" alt="profile" class="profile-picture">
-      <h2>{{profile.firstname}} {{profile.lastname}}</h2>
+      <h2>{{profile.nickname}}</h2>
       <p>{{profile.email}}</p>
-      <p>You logged in as a {{profile.type}}</p>
     </div>
+    <div class="header-wave"></div>
     <ion-list *ngIf="profile" class="menu">
-      <ion-item menuClose ion-item icon-left *ngIf="!isServiceProvider()" (click)="nav.setRoot(pages.companiesPage)">
+      <ion-item menuClose ion-item icon-left *ngIf="!isSeller()" (click)="nav.setRoot(pages.sellersPage)">
         <i class="fa fa-th-list"></i>
-          All Companies
+          Sellers
       </ion-item> 
-      <ion-item menuClose ion-item icon-left *ngIf="isServiceProvider()" (click)="nav.setRoot(pages.myCompaniesPage)">
+      <ion-item menuClose ion-item icon-left *ngIf="isSeller()" (click)="nav.setRoot(pages.dashboardPage)">
         <i class="fa fa-briefcase"></i>
-          My Companies
+          Dashboard
       </ion-item> 
+      <ion-item menuClose ion-item icon-left (click)="nav.setRoot(pages.chatsPage)">
+        <i class="fa fa-comment"></i>
+          Chats
+      </ion-item>
       <ion-item menuClose ion-item icon-left (click)="nav.setRoot(pages.settingsPage)">
         <i class="fa fa-cog"></i>
           Settings
@@ -24,15 +28,22 @@
           Profile
       </ion-item> 
 
+      <ion-item menuClose ion-item icon-left (click)="logout()">
+        <ion-icon class="dark" name="log-out"></ion-icon>
+          Logout
+      </ion-item> 
+
     </ion-list>
+
+    <div class="wave"></div>
   </ion-content>
 
-  <ion-footer>
+  <!-- <ion-footer>
     <button ion-button block clear menuClose class="logout-button" (click)="logout()" icon-start>
       <ion-icon class="dark" name="log-out"></ion-icon>
       Logout
     </button>
-  </ion-footer>
+  </ion-footer> -->
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->

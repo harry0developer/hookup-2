@@ -8,3 +8,64 @@ $light-grey: #f1f1f1f1;
 $dark-grey: #999;
 $dark: #4d4848;
 $black: #000;
+
+h2 {
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.validation {
+    color: $danger;
+    font-size: .9em;
+    text-align: center;
+}
+ 
+.action-sheet-title {
+    color: $dark !important;
+}
+
+.action-sheet-icon {
+    font-size: 1.4em !important;
+    margin-right: 4px;
+
+}
+
+//   Header Menu
+.bar-button-default-md, .bar-button-default-ios {
+    color: $white;
+}
+
+.toolbar-title-md, .toolbar-title-ios {
+    color: $white;
+}
+
+
+.toolbar-background {
+    background-color: $primary;
+}
+
+.sub-header {
+    padding-bottom: 6px; 
+    background:  url('/assets/imgs/header-bg.svg') no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-color: $white;
+    &__title {
+        text-align: left;
+        font-size: 21px;
+        margin-left: 20px;
+        margin-top: 0;
+    }
+    h2 {
+        color: $white;
+    }
+} 
+
+
+.item-ios, .item-md  {
+    background-color:rgba($color: $primary, $alpha: .1)
+}
+
+.header-md::after {
+    display: none;
+}
