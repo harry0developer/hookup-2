@@ -8,14 +8,13 @@ import { HomePage } from '../pages/home/home';
 import { ProfilePage } from '../pages/profile/profile';
 import { SellersPage } from '../pages/sellers/sellers';
 import { DashboardPage } from '../pages/dashboard/dashboard';
-import { ChatPage } from '../pages/chat/chat';
 import { User } from '../models/user';
 import { DataProvider } from '../providers/data/data';
 import { NETWORK, STORAGE_KEY, USER_TYPE, EVENTS } from '../utils/consts';
 import { IntroPage } from '../pages/intro/intro';
 import { AuthProvider } from '../providers/auth/auth';
-import { SettingsPage } from '../pages/settings/settings';
 import { ChatsPage } from '../pages/chats/chats';
+import { SettingsPage } from '../pages/settings/settings';
 
 @Component({
   templateUrl: 'app.html'
@@ -45,7 +44,7 @@ export class MyApp {
       dashboardPage: DashboardPage,
       profilePage: ProfilePage,
       chatsPage: ChatsPage,
-      settingsPage: SettingsPage,
+      settingsPage: SettingsPage
     }
 
   }

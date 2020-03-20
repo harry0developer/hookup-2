@@ -48,7 +48,6 @@ import { LocationProvider } from '../providers/location/location';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MediaProvider } from '../providers/media/media';
 import { ComponentsModule } from '../components/components.module';
-import { SettingsPage } from '../pages/settings/settings';
 import { FirebaseApiProvider } from '../providers/firebase-api/firebase-api';
 import { VisitorPage } from '../pages/visitor/visitor';
 import { FilterPage } from '../pages/filter/filter';
@@ -56,11 +55,11 @@ import { PreviewPage } from '../pages/preview/preview';
 import { NetworkErrorPage } from '../pages/network-error/network-error';
 import { ReportBugPage } from '../pages/report-bug/report-bug';
 import { ChatsPage } from '../pages/chats/chats';
+import { SettingsPage } from '../pages/settings/settings';
 
 @NgModule({
   declarations: [
     MyApp,
-    SettingsPage,
     SignupPage,
     ForgotPasswordPage,
     ProfilePage,
@@ -83,7 +82,8 @@ import { ChatsPage } from '../pages/chats/chats';
     PreviewPage,
     NetworkErrorPage,
     ReportBugPage,
-    LoginPage
+    LoginPage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -102,7 +102,6 @@ import { ChatsPage } from '../pages/chats/chats';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    SettingsPage,
     SignupPage,
     ForgotPasswordPage,
     ProfilePage,
@@ -125,7 +124,8 @@ import { ChatsPage } from '../pages/chats/chats';
     PreviewPage,
     NetworkErrorPage,
     ReportBugPage,
-    LoginPage
+    LoginPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,
