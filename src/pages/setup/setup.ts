@@ -89,6 +89,7 @@ export class SetupPage {
     this.authProvider.signUpWithEmailAndPassword(this.data.email, this.data.password).then(res => {
       this.feedbackProvider.dismissLoading();
       this.data.uid = res.user.uid;
+      this.firebaseApiProvider.addItemToLocalStorage(STORAGE_KEY.firstTimeLogin, true);
       this.addUserToRealtimeDatabase(this.data);
     }).catch(err => {
       this.feedbackProvider.dismissLoading();

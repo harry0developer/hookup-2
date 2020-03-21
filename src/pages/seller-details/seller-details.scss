@@ -40,17 +40,17 @@
   }
   
   .star-icon {
-      font-size: 1.2em !important;
+    font-size: 1.2em !important;
   }
 
   .star-icon::before {
-      color: $primary !important;
-      font-size: 1em !important;
+    color: $primary !important;
+    font-size: 1em !important;
   } 
 
   .tags {
-      display: block;
-      margin: 10px 0
+    display: block;
+    margin: 10px 0
   }
 
   .tags .badge {
@@ -62,7 +62,6 @@
     width: 30px;
     height: 2px;
     border-radius: 0;
-    
   }
 
   .slide-zoom {
@@ -74,11 +73,11 @@
   }
 
   .swiper-container-horizontal > .swiper-pagination-bullets {
-    bottom: 3%;
+    bottom: 6%;
   }
 
   .swiper-pagination-bullet {
-    background-color: #fff;
+    background-color: $primary;
   }
 
   .profile {
@@ -129,7 +128,7 @@
 
 
   ion-fab[bottom] {
-    bottom: 110px;
+    bottom: 150px;
   }
 
   .no-photos {

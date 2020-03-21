@@ -39,7 +39,8 @@ export const STORAGE_KEY = {
     user: 'user',
     location: 'location',
     intro: 'intro',
-    verified: 'verified'
+    verified: 'verified',
+    firstTimeLogin: 'firstTimeLogin'
 }
 
 export const ACTION = {

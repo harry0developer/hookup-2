@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>default-profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-3 [ngClass]="{'active': activeIndex === i}" *ngFor="let icon of arrayTo(20); let i = index;" (click)="selecIcon(i)">
+            <img src="/assets/imgs/profile/women/{{i+1}}.svg" alt="icon">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+
+  <div class="btn">
+    <button ion-button block round (click)="apply()">Apply</button>
+  </div>
+</ion-content>

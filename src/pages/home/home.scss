@@ -1,7 +1,11 @@
 page-home {
 
     .content {
-        background-image: url('/assets/imgs/bg.png');
+        background: linear-gradient(
+            rgb(242, 242, 242), 
+            rgba(242, 242, 242, 0.4)
+          ),
+          url($bg);
     }
     .brand { 
         text-align: center;

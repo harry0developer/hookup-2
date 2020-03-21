@@ -56,6 +56,7 @@ import { NetworkErrorPage } from '../pages/network-error/network-error';
 import { ReportBugPage } from '../pages/report-bug/report-bug';
 import { ChatsPage } from '../pages/chats/chats';
 import { SettingsPage } from '../pages/settings/settings';
+import { DefaultProfilePage } from '../pages/default-profile/default-profile';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { SettingsPage } from '../pages/settings/settings';
     NetworkErrorPage,
     ReportBugPage,
     LoginPage,
-    SettingsPage
+    SettingsPage,
+    DefaultProfilePage
   ],
   imports: [
     BrowserModule,
@@ -125,7 +127,8 @@ import { SettingsPage } from '../pages/settings/settings';
     NetworkErrorPage,
     ReportBugPage,
     LoginPage,
-    SettingsPage
+    SettingsPage,
+    DefaultProfilePage
   ],
   providers: [
     StatusBar,

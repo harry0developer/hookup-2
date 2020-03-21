@@ -87,7 +87,7 @@ chat-bubble {
         border-bottom-left-radius: 10px;
     }
 
-    .message.last:after {
+    .message.last:after, .mine .message.last:after {
         background-color: $light-grey;
     }
     .timestamp {
