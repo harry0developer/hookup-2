@@ -1,13 +1,27 @@
+<!--  
 <ion-header>
-  <ion-navbar color="dark">
-    <ion-title>Filter</ion-title>
+  <div class="sub-header"> 
+    <h2 class="sub-header__title">Filter</h2>
     <ion-buttons end> 
       <button ion-button icon-only clear (click)="dismiss()">
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
+  </div>
+</ion-header>  -->
+
+<ion-header>
+  <ion-navbar color="white">  
+    <ion-buttons end>
+      <button ion-button ion-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons> 
   </ion-navbar> 
-</ion-header>
+  <div class="sub-header">
+    <h2 class="sub-header__title">Filter</h2>
+  </div>  
+</ion-header> 
 
 <ion-content>
   <ion-list>

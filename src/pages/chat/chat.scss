@@ -1,37 +1,19 @@
 page-chat {
     .content {
-        // background-image: url('../../assets/bg-1.png');
-        // background-size: 200px;
-        background: $grey;
-    }
-    
-    .toolbar-ios-dark .bar-button-default-ios,
-    .toolbar-md-dark .bar-button-default-md  {
-        color: #222;
+        background: linear-gradient(
+            rgba(241, 241, 241, 0.60), 
+            rgba(241, 241, 241, 0.60)
+        ),
+        url($bg)
     } 
-    ion-header {
-        background-color: $white;
-    }
 
     .sub-header {
-        margin: 24px 0 10px 0;
-        &__title {
-            text-align: left;
-            font-size: 18px;
-            margin: 10px 0 0 20px ;
-            position: absolute;
-            display: inline;
-        }
-    } 
+        background-color: $light-grey;
+    }
 
     .item-ios [item-start], .item-md [item-start]{
         margin: 8px 2px 8px 0;
     }
-
-    .toolbar-background{
-        background-color: $white !important;
-        border: none !important;
-    } 
 
     .list-ios {
         margin: 0;

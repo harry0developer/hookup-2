@@ -1,13 +1,17 @@
 page-profile {
-  .content {
-		background-color: $white;
+
+  .sub-header {
+      background-color: $light-grey;
   }
   
   .profile {
     text-align: center;
-    // background-image: url('../../assets/bg-1.png');
-    background-color: $white;
     padding: 8% 0;
+    background: linear-gradient(
+      rgba(241, 241, 241, 0.60), 
+      rgba(241, 241, 241, 0.60)
+    ),
+    url($bg);
     .profile-image {
       border-radius: 100px;
       border: 2px solid $primary;
@@ -24,6 +28,9 @@ page-profile {
     .userType {
       margin-top: 0;
       font-size: 1em;
+    }
+    .header-wave {
+      border-right-color: $light-grey;
     }
   } 
   .pins {

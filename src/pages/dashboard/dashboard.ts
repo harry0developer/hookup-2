@@ -68,7 +68,7 @@ export class DashboardPage {
   }
 
   getProfilePicture(user): string {
-    return !!user.profilePic ? user.profilePic : `assets/imgs/users/${user.gender}.svg`;
+    return !!user.profilePic ? user.profilePic : `assets/imgs/${user.gender}.svg`;
   }
 
   capitalizeFirstLetter(str: string): string {

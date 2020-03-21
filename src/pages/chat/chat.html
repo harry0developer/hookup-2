@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <div class="sub-header">
     <ion-avatar item-left>
       <img [src]="getProfilePic(person)">
@@ -10,7 +10,17 @@
       </button>
     </ion-buttons>
   </div>
-</ion-header> 
+</ion-header>  -->
+
+<ion-header>
+  <ion-navbar color="white">  
+   </ion-navbar>
+  <div class="sub-header">
+    <h2 class="sub-header__title">
+      {{capitalizeFirstLetter(person?.nickname)}}
+    </h2>
+  </div>  
+</ion-header>
 
 <ion-content padding-top #content>
   <ion-list *ngIf="!isLoading" no-lines>

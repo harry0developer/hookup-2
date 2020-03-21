@@ -42,7 +42,9 @@ page-login {
     ion-item.item.item-input {
         border-radius: 40px !important;
     }
- 
+    .bar-button-default-md, .bar-button-default-ios {
+        color: $primary;
+    }
     h2 {
         margin-bottom: 20px;
     }
@@ -53,11 +55,13 @@ page-login {
             padding-left: 16px;
         }
     }
+
     .email-address {
         ion-label {
             padding-left: 16px;
         }
     }
+
     ion-label i{ 
         color: $primary;
     }

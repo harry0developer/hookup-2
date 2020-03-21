@@ -1,7 +1,13 @@
 @import '../theme/main.scss';
-
+.sub-header {
+	background-color: $light-grey;
+}
 .user-profile {
-    background: $white;
+    background: linear-gradient(
+      rgba(241, 241, 241, 0.60), 
+      rgba(241, 241, 241, 0.60)
+    ),
+    url($bg);
     height: 100%;
 	color: $white !important;
 	border-top: 0 !important;
@@ -42,10 +48,10 @@
     }
 
     .header-wave { 
-        background:  url('/assets/imgs/header-bg.svg') no-repeat;
+        background:  url($wave-header) no-repeat;
         background-size: cover;
         background-position-x: center;
-        background-color: $white;
+        background-color: $light-grey;
         height: 60px;
     }
     .menu {

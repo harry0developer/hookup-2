@@ -39,11 +39,9 @@ export class ProfilePage {
 
   ionViewDidLoad() {
     this.profile = this.firebaseApiProvider.getLoggedInUser();
-    console.log(this.profile);
 
     this.imagesRef = `${COLLECTION.images}/${this.profile.uid}`;
     this.getAllImages();
-
     this.dataProvider.getAllFromCollection(COLLECTION.images).subscribe(r => {
       console.log(r);
     });
@@ -55,8 +53,6 @@ export class ProfilePage {
   }
 
   updateUserProp(ref: string, uid: string, keyValue) {
-    console.log(ref, uid, keyValue);
-
     this.firebaseApiProvider.updateItem(ref, uid, keyValue).then(() => {
       console.log('Updated ', uid);
     }).catch(err => {
