@@ -59,15 +59,25 @@ export class SellersPage {
       msg: MESSAGES.locationAccessError
     };
 
+    this.getSellers();
+  }
+
+
+  getSellers() {
     const ref = this.firebaseApiProvider.firebaseRef.ref(`/${COLLECTION.users}`);
     ref.on("value", snap => {
       this.zone.run(() => {
         const users = this.firebaseApiProvider.convertObjectToArray(snap.val());
         const sellers = users.filter(u => u.userType === USER_TYPE.seller);
-        this.sellers = this.calculateUserDistance(sellers);
+        const unOrderedSellers = this.calculateUserDistance(sellers);
+        this.sellers = this.filterSellers(unOrderedSellers);
         this.isLoading = false;
       });
     });
+  }
+
+  filterSellers(sellers: User[]): User[] {
+    return sellers.filter(s => s.age <= this.filter.age); //.filter(s => s.race === this.filter.race);
   }
 
   calculateUserDistance(users: User[]): User[] {
@@ -82,7 +92,7 @@ export class SellersPage {
     let modal = this.modalCtrl.create(FilterPage, { filter: this.filter });
     modal.onDidDismiss(data => {
       if (data) {
-        this.filter = { ...data };
+        this.getSellers();
       }
     });
     modal.present();

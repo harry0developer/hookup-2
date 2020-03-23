@@ -1,10 +1,6 @@
 page-chat {
-    .content {
-        background: $light-grey;
-    } 
-
-    .sub-header {
-        background-color: $light-grey;
+    .sub-header, .content{
+        background-color: $light;
     }
 
     .item-ios [item-start], .item-md [item-start]{

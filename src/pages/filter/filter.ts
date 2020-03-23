@@ -23,7 +23,6 @@ export class FilterPage {
 
   ionViewDidLoad() {
     this.filter = this.navParams.get('filter');
-    console.log(this.filter);
   }
 
   dismiss() {
@@ -31,7 +30,6 @@ export class FilterPage {
   }
 
   applyFilter() {
-    console.log(this.filter);
     this.viewProvider.dismiss(this.filter);
   }
 

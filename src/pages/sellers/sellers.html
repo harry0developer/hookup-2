@@ -49,7 +49,10 @@
                 <img [src]="getUserProfile(user)">
               </ion-avatar>
               <div class="info">
-                <h2>{{capitalizeFirstLetter(user?.nickname)}}</h2>
+                <h2>
+                  {{capitalizeFirstLetter(user?.nickname)}} - 
+                  <ion-badge>{{user?.age}}</ion-badge>
+                </h2>
                 <p [hidden]="!locationAccess.allowed">
                   <span class="distance">
                     <i class="fa fa-map-pin" item-start></i>
@@ -64,5 +67,10 @@
       </ion-row>
     </ion-grid>
   </ion-list> 
+  <ion-card class="no-users-found" *ngIf="!isLoading && sellers.length < 1">
+    <ion-item>
+      <p class="not-found">No users found</p>      
+    </ion-item>
+  </ion-card>
 </ion-content>
  

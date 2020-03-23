@@ -31,7 +31,7 @@
 
   <div class="profile" *ngIf="user && !isLoading">
     <h2>{{capitalizeFirstLetter(user?.nickname)}} 
-      <ion-badge color="primary" class="age">{{user?.age}}</ion-badge>
+      <!-- <ion-badge color="primary" class="age">{{user?.age}}</ion-badge> -->
     </h2>
     <p>
       <span class="distance">
@@ -39,8 +39,11 @@
         {{getUserDistance(user)}} 
       </span>
       km away
-    </p> 
-    <p>{{user?.description}}</p> 
+    </p>  
+    <ion-badge *ngIf="user.race">{{capitalizeFirstLetter(user.race)}}</ion-badge>
+    <ion-badge *ngIf="user.age">{{user.age}} yrs</ion-badge>
+    <ion-badge *ngIf="user.bodyType">{{capitalizeFirstLetter(user.bodyType)}}</ion-badge>
+    <p>{{user.description}}</p>
   </div>
 
   <ion-fab right bottom (click)="openChats(user)"  *ngIf="!isLoading">  
