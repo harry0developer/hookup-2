@@ -40,7 +40,8 @@ export const STORAGE_KEY = {
     location: 'location',
     intro: 'intro',
     verified: 'verified',
-    firstTimeLogin: 'firstTimeLogin'
+    firstTimeLogin: 'firstTimeLogin',
+    filter: 'filter'
 }
 
 export const ACTION = {

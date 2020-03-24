@@ -68,8 +68,8 @@
     </ion-grid>
   </ion-list> 
   <ion-card class="no-users-found" *ngIf="!isLoading && sellers.length < 1">
-    <ion-item>
-      <p class="not-found">No users found</p>      
+    <ion-item text-wrap>
+      <p class="not-found">No users found. Please change the filter.</p>      
     </ion-item>
   </ion-card>
 </ion-content>

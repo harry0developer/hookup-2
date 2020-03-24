@@ -33,6 +33,15 @@ export class FilterPage {
     this.viewProvider.dismiss(this.filter);
   }
 
+  clearFilter() {
+    this.filter = {
+      distance: 100,
+      age: 99,
+      race: 'all'
+    };
+    this.viewProvider.dismiss(this.filter);
+  }
+
   capitalizeFirstLetter(str: string): string {
     return this.dataProvider.capitalizeFirstLetter(str);
   }

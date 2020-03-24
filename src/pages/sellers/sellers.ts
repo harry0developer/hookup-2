@@ -31,11 +31,7 @@ export class SellersPage {
   imgs = [];
   onlineUsers = [];
   isLoading: boolean = true;
-  filter: Filter = {
-    distance: 100,
-    age: 99,
-    race: 'all'
-  };
+  filter: Filter;
   locationAccess: {
     allowed: boolean,
     msg: string;
@@ -53,6 +49,14 @@ export class SellersPage {
 
   ionViewDidLoad() {
     this.profile = this.firebaseApiProvider.getLoggedInUser();
+    this.filter = this.firebaseApiProvider.getItemFromLocalStorage(STORAGE_KEY.filter);
+    if (!this.filter || !this.filter.age) {
+      this.filter = {
+        distance: 100,
+        age: 99,
+        race: 'all'
+      };
+    }
     this.isLoading = true;
     this.locationAccess = {
       allowed: this.profile.location && this.profile.location.lat && this.profile.location.lat ? true : false,
@@ -77,7 +81,11 @@ export class SellersPage {
   }
 
   filterSellers(sellers: User[]): User[] {
-    return sellers.filter(s => s.age <= this.filter.age); //.filter(s => s.race === this.filter.race);
+    if (this.filter.race) {
+      const race = this.filter.race.toLocaleLowerCase() !== 'all' ? sellers.filter(s => s.race.toLocaleLowerCase() === this.filter.race.toLocaleLowerCase()) : sellers;
+      return race.filter(a => a.age <= this.filter.age);
+    }
+    return sellers;
   }
 
   calculateUserDistance(users: User[]): User[] {
@@ -92,6 +100,7 @@ export class SellersPage {
     let modal = this.modalCtrl.create(FilterPage, { filter: this.filter });
     modal.onDidDismiss(data => {
       if (data) {
+        this.filter = data;
         this.getSellers();
       }
     });

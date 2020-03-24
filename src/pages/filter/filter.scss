@@ -25,7 +25,12 @@ page-filter {
         width: 200px;
         margin: 0 auto;
         .button {
-            height: 40px;
+            height: 38px;
+            margin: 10px 0;
         }
+    }
+
+    .item-input .label-md, .item-select .label-md, .item-datetime .label-md  {
+        color: $dark;
     }
 }
