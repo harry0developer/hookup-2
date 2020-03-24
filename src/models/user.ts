@@ -18,4 +18,5 @@ export interface User {
     distance?: string;
     location: Geo;
     status: string;
+    avatar: string;
 };

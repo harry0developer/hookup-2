@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, AlertController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController, Events, ViewController } from 'ionic-angular';
 import { User } from '../../models/user';
 import { NationalityPage } from '../nationality/nationality';
 import { FeedbackProvider } from '../../providers/feedback/feedback';
@@ -53,6 +53,7 @@ export class LoginPage {
     public locationProvider: LocationProvider,
     public dataProvider: DataProvider,
     public ionEvents: Events,
+    public viewCtrl: ViewController,
     public alertCtrl: AlertController) {
   }
 
@@ -115,6 +116,7 @@ export class LoginPage {
   navigate() {
     this.dataProvider.addItemToLocalStorage(STORAGE_KEY.user, this.profile);
     this.ionEvents.publish(EVENTS.loggedIn, this.profile);
+    this.firebaseApiProvider.getUserChat();
     this.profile.userType === USER_TYPE.buyer ? this.navCtrl.setRoot(SellersPage, { user: this.profile }) : this.navCtrl.setRoot(DashboardPage, { user: this.profile })
   }
 
@@ -159,5 +161,9 @@ export class LoginPage {
       }
     });
     modal.present();
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 }

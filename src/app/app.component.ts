@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, ModalController, Events } from 'ionic-angular';
+import { Nav, Platform, ModalController, Events, ActionSheetController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Network } from '@ionic-native/network';
@@ -35,6 +35,7 @@ export class MyApp {
     private authProvider: AuthProvider,
     public modalCtrl: ModalController,
     public ionEvents: Events,
+    public actionSheetCtrl: ActionSheetController,
     public splashScreen: SplashScreen) {
     this.initializeApp();
 
@@ -111,4 +112,30 @@ export class MyApp {
       this.nav.setRoot(HomePage);
     });
   }
+
+
+  presentLogoutActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'You are about to Logout',
+      buttons: [
+        {
+          text: 'Logout',
+          icon: 'log-out',
+          handler: () => {
+            this.logout();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
+  }
+
 }

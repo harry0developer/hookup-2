@@ -7,14 +7,14 @@
 <ion-content>
   <ion-slides>
     <ion-slide> <!-- Intro slide -->
-      <ion-card>
+      <ion-card class="pad">
         <img src="assets/icon/info.png" alt="">
         <h2>Please tell us a bit about yourself.</h2>
         <p>This will help us filter users which match your preferences and improve your experience</p>
         <h3 class="questions-count">Only 6 questions</h3>
       </ion-card>
 
-      <div padding class="controls">
+      <div padding class="controls one-btn">
         <button ion-button block small round icon-end (click)="nextSlide()">
           Lets go
           <ion-icon name="arrow-forward"></ion-icon>
@@ -23,7 +23,7 @@
     </ion-slide>
 
     <ion-slide> <!-- user type slide-->
-      <ion-card>
+      <ion-card class="pad">
         <img src="assets/icon/info.png" alt="">
         <ion-list radio-group [(ngModel)]="data.userType">
           <ion-label stacked>
@@ -45,24 +45,28 @@
         </ion-list>
         <div class="slides-counter">{{getSlideNumber()}}</div>
       </ion-card>
-      <div padding class="controls">
-        <button ion-button block small round icon-end [disabled]="!data.userType" (click)="nextSlide()">
-          Next
-          <ion-icon name="arrow-forward"></ion-icon>
-        </button>
-      </div>
-      <div padding class="controls">
-        <button ion-button block small clear icon-start (click)="previousSlide()">
-          <ion-icon name="arrow-back"></ion-icon>
-          Prev
-        </button>
-      </div>
+      <ion-grid class="controls">
+        <ion-row>
+          <ion-col col-6>
+            <button ion-button block small outline round icon-start (click)="previousSlide()">
+              <ion-icon name="arrow-back"></ion-icon>
+              Prev
+            </button>
+          </ion-col>
+          <ion-col col-6>
+            <button ion-button block small round icon-end [disabled]="!data.userType" (click)="nextSlide()">
+              Next
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-slide>
 
 
     <ion-slide> <!-- Gender slide -->
       <ion-list radio-group [(ngModel)]="data.gender">
-        <ion-card>
+        <ion-card class="pad">
           <img src="assets/icon/gender.png" alt="">
           <ion-label stacked>
             <h2>What's your gender?</h2>
@@ -91,23 +95,27 @@
           </ion-item>
           <div class="slides-counter">{{getSlideNumber()}}</div>
         </ion-card>
-        <div padding class="controls">
-          <button ion-button block small round icon-end [disabled]="!data.gender" (click)="nextSlide()">
-            Next
-            <ion-icon name="arrow-forward"></ion-icon>
-          </button>
-        </div>
-        <div padding class="controls">
-          <button ion-button block small clear icon-start (click)="previousSlide()">
-            <ion-icon name="arrow-back"></ion-icon>
-            Prev
-          </button>
-        </div>
+        <ion-grid class="controls">
+          <ion-row>
+            <ion-col col-6>
+              <button ion-button block small outline round icon-start (click)="previousSlide()">
+                <ion-icon name="arrow-back"></ion-icon>
+                Prev
+              </button>
+            </ion-col>
+            <ion-col col-6>
+              <button ion-button block small round icon-end [disabled]="!data.gender" (click)="nextSlide()">
+                Next
+                <ion-icon name="arrow-forward"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-list>
     </ion-slide>
 
     <ion-slide> <!-- Age slide -->
-      <ion-card>
+      <ion-card class="pad">
         <img src="assets/icon/age.png" alt="">
         <ion-label stacked>
           <h2>What's your age?</h2>
@@ -121,24 +129,27 @@
         </ion-item>
         <div class="slides-counter">{{getSlideNumber()}}</div>
       </ion-card>
-      <div padding class="controls">
-        <button ion-button block small round icon-end [disabled]="!data.age" (click)="nextSlide()">
-          Next
-          <ion-icon name="arrow-forward"></ion-icon>
-        </button>
-      </div>
-      <div padding class="controls">
-        <button ion-button block small clear icon-start (click)="previousSlide()">
-          <ion-icon name="arrow-back"></ion-icon>
-          Prev
-        </button>
-      </div>
+      <ion-grid class="controls">
+        <ion-row>
+          <ion-col col-6>
+            <button ion-button block small outline round icon-start (click)="previousSlide()">
+              <ion-icon name="arrow-back"></ion-icon>
+              Prev
+            </button>
+          </ion-col>
+          <ion-col col-6>
+            <button ion-button block small round icon-end [disabled]="!data.age" (click)="nextSlide()">
+              Next
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-slide>
-
 
     <ion-slide> <!-- Race slide -->
       <ion-list radio-group [(ngModel)]="data.race">
-        <ion-card>
+        <ion-card class="pad">
           <img src="assets/icon/race.png" alt="">
           <ion-label stacked>
             <h2>What's your race?</h2>
@@ -163,25 +174,28 @@
           </ion-item>
           <div class="slides-counter">{{getSlideNumber()}}</div>
         </ion-card>
-        <div padding class="controls">
-          <button ion-button block small round icon-end [disabled]="!data.race" (click)="nextSlide()">
-            Next
-            <ion-icon name="arrow-forward"></ion-icon>
-          </button>
-        </div>
-        <div padding class="controls">
-          <button ion-button block small clear icon-start (click)="previousSlide()">
-            <ion-icon name="arrow-back"></ion-icon>
-            Prev
-          </button>
-        </div>
+        <ion-grid class="controls">
+          <ion-row>
+            <ion-col col-6>
+              <button ion-button block small outline round icon-start (click)="previousSlide()">
+                <ion-icon name="arrow-back"></ion-icon>
+                Prev
+              </button>
+            </ion-col>
+            <ion-col col-6>
+              <button ion-button block small round icon-end [disabled]="!data.race" (click)="nextSlide()">
+                Next
+                <ion-icon name="arrow-forward"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-list>
     </ion-slide>
 
-
     <ion-slide> <!-- Body type slidfe-->
       <ion-list radio-group [(ngModel)]="data.bodyType">
-        <ion-card>
+        <ion-card class="pad">
           <img *ngIf="data.gender !== 'other'" src="assets/icon/{{data.gender}}-body.png" alt="">
           <img *ngIf="data.gender === 'other'" src="assets/icon/male-body.png" alt="">
           <ion-label stacked>
@@ -206,20 +220,60 @@
           </ion-item> 
           <div class="slides-counter">{{getSlideNumber()}}</div>
         </ion-card>
-        <div padding class="controls">
-          <button ion-button block small round icon-end [disabled]="!data.bodyType" (click)="nextSlide()">
-            Next
-            <ion-icon name="arrow-forward"></ion-icon>
-          </button>
-        </div>
-
-        <div padding class="controls">
-          <button ion-button block small clear icon-start (click)="previousSlide()">
-            <ion-icon name="arrow-back"></ion-icon>
-            Prev
-          </button>
-        </div>
+        <ion-grid class="controls">
+          <ion-row>
+            <ion-col col-6>
+              <button ion-button block small outline round icon-start (click)="previousSlide()">
+                <ion-icon name="arrow-back"></ion-icon>
+                Prev
+              </button>
+            </ion-col>
+            <ion-col col-6>
+              <button ion-button block small round icon-end [disabled]="!data.bodyType" (click)="nextSlide()">
+                Next
+                <ion-icon name="arrow-forward"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-list>
+    </ion-slide>
+
+    <ion-slide> <!-- Avatar slide -->
+      <ion-card class="profile-avatar">
+        <img src="assets/icon/age.png" alt="">
+        <ion-label stacked>
+          <h2>Choose profile avatar</h2>
+        </ion-label> 
+        <ion-item> 
+          <ion-grid>
+            <ion-row>
+              <ion-col col-3 class="ava" *ngFor="let avatar of avatars; let i=index" (tap)="selectAvatar(i)">
+                <img [ngClass]="{'active': avatarIndex === i}" [src]="avatar" alt=""> 
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        <div class="slides-counter">{{getSlideNumber()}}</div>
+      </ion-card>
+
+      <ion-grid class="controls">
+        <ion-row>
+          <ion-col col-6>
+            <button ion-button block small outline round icon-start (click)="previousSlide()">
+              <ion-icon name="arrow-back"></ion-icon>
+              Prev
+            </button>
+          </ion-col>
+          <ion-col col-6>
+            <button ion-button block small round icon-end [disabled]="avatarIndex < 0" (click)="nextSlide()">
+              Next
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+
     </ion-slide>
 
     <ion-slide> <!-- Height Slide-->

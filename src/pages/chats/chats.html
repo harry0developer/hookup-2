@@ -11,29 +11,9 @@
       (ionChange)="onSearchInput()"
     ></ion-searchbar>
   </ion-toolbar>
-</ion-header>
-
-<!-- <ion-header>
-  <ion-navbar color="white"> 
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button> 
-  </ion-navbar> 
-  <div class="sub-header">
-    <h2 class="sub-header__title">Chats</h2>
-    <ion-toolbar >
-      <ion-searchbar
-        [formControl]="searchControl"
-        (ionChange)="onSearchInput()"
-      ></ion-searchbar>
-    </ion-toolbar>
-  </div>  
-</ion-header>  -->
-
-
+</ion-header> 
 
 <ion-content>
-
   <div *ngIf="searching" class="spinner-container">
     <ion-spinner></ion-spinner>
   </div>
@@ -54,8 +34,8 @@
     </ion-card>
 
     <ion-card *ngIf="users.length < 1">
-      <ion-item>
-        <p class="not-found">No users found</p>      
+      <ion-item text-wrap>
+        <p class="not-found">You do not have any chats yet</p>      
       </ion-item>
     </ion-card>
   </ion-list>   

@@ -42,11 +42,12 @@ export class ChatsPage {
   ionViewDidLoad() {
     this.isLoading = true;
     this.profile = this.firebaseApiProvider.getLoggedInUser();
+    this.firebaseApiProvider.getUserChat(this.profile);
+
     this.setFilteredItems("");
     this.searchControl.valueChanges.pipe(debounceTime(700)).subscribe(search => {
       this.setFilteredItems(search);
     });
-
     this.isLoading = false;
   }
 
@@ -65,7 +66,7 @@ export class ChatsPage {
   }
 
   getProfilePicture(user): string {
-    return !!user.profilePic ? user.profilePic : `assets/imgs/users/${user.gender}.svg`;
+    return user.avatar;
   }
 
   capitalizeFirstLetter(str: string): string {

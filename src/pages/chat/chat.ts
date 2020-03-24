@@ -87,7 +87,7 @@ export class ChatPage {
 
   scrollToEnd() {
     setTimeout(() => {
-      if (typeof this.content.scrollToBottom !== 'undefined') {
+      if (this.content && this.content.scrollToBottom && typeof this.content.scrollToBottom !== 'undefined') {
         this.content.scrollToBottom();
       }
     }, 100);

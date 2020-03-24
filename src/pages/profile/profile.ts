@@ -96,7 +96,6 @@ export class ProfilePage {
             console.log(err);
             if (err.code === OBJECT_NOT_FOUND) {
               console.log(err);
-
               // this.removeImageKeyFromDB(err.message);
             }
           });
@@ -114,7 +113,6 @@ export class ProfilePage {
       console.log('Cleaned ...');
     }).catch(err => {
       console.log('Oops something went wrong');
-
     });
   }
 

@@ -109,6 +109,7 @@
 
       <div class="buttons-group">
         <button ion-button small round  [disabled]="!email.valid || !password.valid || !nickname.valid" (click)="signupWithEmailAndPassword()">Signup</button>
+        <button ion-button small round clear (click)="dismiss()"> Cancel </button>
       </div>
     
     </div>

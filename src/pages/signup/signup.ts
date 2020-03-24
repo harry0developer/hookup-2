@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 import { User } from '../../models/user';
 import { NationalityPage } from '../nationality/nationality';
 import { SetupPage } from '../setup/setup';
@@ -61,8 +61,8 @@ export class SignupPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
-    private firebaseApiProvider: FirebaseApiProvider,
-    private zone: NgZone,
+    public firebaseApiProvider: FirebaseApiProvider,
+    public viewCtrl: ViewController,
     public feedbackProvider: FeedbackProvider) {
   }
 
@@ -112,5 +112,9 @@ export class SignupPage {
       }
     });
     modal.present();
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 }

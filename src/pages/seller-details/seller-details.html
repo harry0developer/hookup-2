@@ -20,6 +20,7 @@
 
   <div class="no-photos" *ngIf="!isLoading && !hasImages">
     <img src="assets/imgs/no-photos.svg" alt="">
+    <p>No images</p>
   </div> 
 
 
@@ -42,6 +43,7 @@
     </p>  
     <ion-badge *ngIf="user.race">{{capitalizeFirstLetter(user.race)}}</ion-badge>
     <ion-badge *ngIf="user.age">{{user.age}} yrs</ion-badge>
+    <ion-badge *ngIf="user.height">{{user.height}} cm</ion-badge>
     <ion-badge *ngIf="user.bodyType">{{capitalizeFirstLetter(user.bodyType)}}</ion-badge>
     <p>{{user.description}}</p>
   </div>

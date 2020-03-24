@@ -11,11 +11,13 @@ import moment from 'moment';
 export class FirebaseApiProvider {
   firebaseRef = firebase.database();
   chatRef = firebase.database().ref(COLLECTION.chats);
-  profile: User;
   users: User[] = [];
+  profile: User;
   constructor(public afAuth: AngularFireAuth) {
-    this.profile = this.getLoggedInUser();
-    this.getUserChat();
+    const user = this.getLoggedInUser();
+    if (user) {
+      this.getUserChat(user);
+    }
   }
 
   getLoggedInUser(): User {
@@ -119,14 +121,17 @@ export class FirebaseApiProvider {
   //   });
   // }
 
-  getUserChat() {
-    // firebase.database().ref(COLLECTION.chats).child(this.profile.uid).on('value', snap => {
-    //   snap.forEach(u => {
-    //     firebase.database().ref(COLLECTION.users).child(u.key).on('value', uSnap => {
-    //       this.users.push(uSnap.val());
-    //     });
-    //   });
-    // });
+  getUserChat(profile) {
+    this.users = [];
+    if (profile && profile.uid) {
+      firebase.database().ref(COLLECTION.chats).child(profile.uid).on('value', snap => {
+        snap.forEach(u => {
+          firebase.database().ref(COLLECTION.users).child(u.key).on('value', uSnap => {
+            this.users.push(uSnap.val());
+          });
+        });
+      });
+    }
   }
 
   filterItems(searchTerm) {

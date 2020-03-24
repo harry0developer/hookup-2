@@ -39,8 +39,30 @@ export class SetupPage {
     verified: false,
     profilePic: '',
     location: null,
-    status: ''
-  }
+    status: '',
+    avatar: ''
+  };
+
+  avatarIndex: number = -999;
+
+  avatars = [
+    '/assets/imgs/profile/men/1.svg',
+    '/assets/imgs/profile/men/2.svg',
+    '/assets/imgs/profile/men/3.svg',
+    '/assets/imgs/profile/men/4.svg',
+    '/assets/imgs/profile/men/5.svg',
+    '/assets/imgs/profile/men/6.svg',
+    '/assets/imgs/profile/men/7.svg',
+    '/assets/imgs/profile/men/8.svg',
+    '/assets/imgs/profile/men/9.svg',
+    '/assets/imgs/profile/men/10.svg',
+    '/assets/imgs/profile/men/11.svg',
+    '/assets/imgs/profile/men/12.svg',
+    '/assets/imgs/profile/men/13.svg',
+    '/assets/imgs/profile/men/14.svg',
+    '/assets/imgs/profile/men/15.svg',
+    '/assets/imgs/profile/men/16.svg'
+  ];
 
   constructor(public navCtrl: NavController,
     public modalCtrl: ModalController,
@@ -143,6 +165,7 @@ export class SetupPage {
           role: 'cancel',
           handler: () => {
             console.log('Dont retry clicked');
+            this.navigate();
           }
         },
         {
@@ -167,6 +190,11 @@ export class SetupPage {
     this.slides.lockSwipes(false);
     this.slides.slidePrev();
     this.slides.lockSwipes(true);
+  }
+
+  selectAvatar(index: number) {
+    console.log(index);
+    this.avatarIndex = index;
   }
 
   slideChange(data) {

@@ -5,7 +5,8 @@ export const COLLECTION = {
     images: 'images',
     countries: 'countries',
     appInfo: 'appInfo',
-    chats: 'chats'
+    chats: 'chats',
+    feedback: 'feedback',
 }
 
 export const DATABASE = {

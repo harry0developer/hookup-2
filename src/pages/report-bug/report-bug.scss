@@ -1,5 +1,11 @@
 page-report-bug {
+    .bar-button-md[icon-only], .bar-button-ios[icon-only] {
+        color: $white;
+    }
+    .sub-header {
+        background-color: $white;
+    }
     .btn {
-        margin: 0 10%;
+        margin: 0 20%;
     }
 }

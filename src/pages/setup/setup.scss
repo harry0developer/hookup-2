@@ -2,18 +2,7 @@ page-setup {
 
     .content {
         background-color: $light;
-    }
-    // .toolbar-background {
-    //     background: $light !important;
-    // } 
-    // .toolbar-title {
-    //     color: white !important;
-    // }
-
-    // .header::after {
-    //     display: none !important; 
-    // }
-
+    } 
  
     .toolbar-title, .back-button.show-back-button {
         color: $white;
@@ -22,14 +11,16 @@ page-setup {
     ion-card{
         position: relative;
         min-height: 320px;
-        padding: 20px 20px 30px 20px;
+        .pad {
+            padding: 20px 20px 30px 20px;
+        }
         h2 {
             padding-bottom: 10px;
         }
         img {
             margin: 0 auto;
             padding-bottom: 20px;
-        }
+        } 
     }
 
     .radio-ios .radio-icon {
@@ -56,12 +47,35 @@ page-setup {
     }
 
     .controls {
-        .button {
-            width: 200px;
-            padding: 20px 0;
-            margin: 0 auto;
+        &.one-btn {
+            margin: 0 20%;
         }
+        button {
+            padding: 18px;
+        } 
     }
+
+    .profile-avatar {
+        .grid {
+            padding: 0;
+        }
+        img.active {
+            border: 2px solid $primary;
+            padding: 4px !important;
+            border-radius: 50%;
+        }
+
+        .ava img{
+            width: 60px;
+            height: 60px;
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        } 
+     
+    }
+
+    
 
 
     // .radio-ios .radio-icon {

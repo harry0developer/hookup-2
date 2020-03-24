@@ -18,6 +18,20 @@ import { DashboardPage } from '../dashboard/dashboard';
 export class HomePage {
   readTCsAndCs: boolean = true;
   profile: User;
+  avatars = [
+    '/assets/imgs/profile/men/1.svg',
+    '/assets/imgs/profile/men/2.svg',
+    '/assets/imgs/profile/men/3.svg',
+    '/assets/imgs/profile/men/4.svg',
+    '/assets/imgs/profile/men/5.svg',
+    '/assets/imgs/profile/men/6.svg',
+    '/assets/imgs/profile/men/7.svg',
+    '/assets/imgs/profile/men/8.svg',
+    '/assets/imgs/profile/men/9.svg',
+    '/assets/imgs/profile/men/10.svg',
+    '/assets/imgs/profile/men/11.svg',
+    '/assets/imgs/profile/men/12.svg'
+  ];
 
   constructor(
     public navCtrl: NavController,

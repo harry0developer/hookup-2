@@ -154,7 +154,7 @@ export class SellersPage {
 
 
   getUserProfile(user: User): string {
-    return user && user.profilePic ? user.profilePic : `assets/imgs/${user.gender}.svg`;
+    return user && user.avatar;
   }
 
   capitalizeFirstLetter(str: string): string {

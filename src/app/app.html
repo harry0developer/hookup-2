@@ -19,31 +19,23 @@
         <i class="fa fa-comment"></i>
           Chats
       </ion-item>
-      <ion-item menuClose ion-item icon-left (click)="nav.setRoot(pages.settingsPage)">
-        <i class="fa fa-cog"></i>
-          Settings
-      </ion-item>
       <ion-item menuClose ion-item icon-left (click)="nav.setRoot(pages.profilePage)">
         <i class="fa fa-user"></i>
           Profile
       </ion-item> 
-
-      <ion-item menuClose ion-item icon-left (click)="logout()">
+      <ion-item menuClose ion-item icon-left (click)="nav.setRoot(pages.settingsPage)">
+        <i class="fa fa-cog"></i>
+          Settings
+      </ion-item>
+      <ion-item menuClose ion-item icon-left (click)="presentLogoutActionSheet()">
         <ion-icon class="dark" name="log-out"></ion-icon>
           Logout
       </ion-item> 
-
     </ion-list>
 
     <div class="wave"></div>
   </ion-content>
-
-  <!-- <ion-footer>
-    <button ion-button block clear menuClose class="logout-button" (click)="logout()" icon-start>
-      <ion-icon class="dark" name="log-out"></ion-icon>
-      Logout
-    </button>
-  </ion-footer> -->
+ 
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
