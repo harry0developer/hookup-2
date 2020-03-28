@@ -1,9 +1,9 @@
 import { Component, ViewChild, ContentChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, ViewController, Slide } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, ViewController, Slide, Events } from 'ionic-angular';
 import { Slides } from 'ionic-angular';
 import { MediaProvider } from '../../providers/media/media';
 import { FirebaseApiProvider } from '../../providers/firebase-api/firebase-api';
-import { COLLECTION, STORAGE_KEY, ACTION } from '../../utils/consts';
+import { COLLECTION, STORAGE_KEY, ACTION, EVENTS } from '../../utils/consts';
 import { User } from '../../models/user';
 import { FeedbackProvider } from '../../providers/feedback/feedback';
 
@@ -24,6 +24,7 @@ export class PreviewPage {
     public actionSheetCtrl: ActionSheetController,
     public viewCtrl: ViewController,
     public mediaProvider: MediaProvider,
+    public ionEvents: Events,
     public firebaseApiProvider: FirebaseApiProvider,
     public feedbackProvider: FeedbackProvider
   ) { }
@@ -36,7 +37,7 @@ export class PreviewPage {
   }
 
   removeImage(img) {
-    if (img.path === this.profile.profilePic) {
+    if (img.path !== this.profile.profilePic) {
       this.feedbackProvider.presentLoading('Deleting photo...');
       this.mediaProvider.removeImageByFilename(this.profile.uid, img.url).then(r => {
         this.feedbackProvider.dismissLoading();
@@ -48,6 +49,7 @@ export class PreviewPage {
           }
           this.viewCtrl.dismiss(ACTION.delete);
           this.firebaseApiProvider.addItemToLocalStorage(STORAGE_KEY.user, this.profile);
+          this.ionEvents.publish(EVENTS.loggedIn, this.profile);
           this.firebaseApiProvider.updateItem(`${COLLECTION.users}`, `${this.profile.uid}`, { profilePic: '' }).then(() => {
             console.log('User profile pic update');
           }).catch(err => {
