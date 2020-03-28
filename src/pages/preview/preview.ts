@@ -36,7 +36,7 @@ export class PreviewPage {
   }
 
   removeImage(img) {
-    if (img.path !== this.profile.profilePic) {
+    if (img.path === this.profile.profilePic) {
       this.feedbackProvider.presentLoading('Deleting photo...');
       this.mediaProvider.removeImageByFilename(this.profile.uid, img.url).then(r => {
         this.feedbackProvider.dismissLoading();

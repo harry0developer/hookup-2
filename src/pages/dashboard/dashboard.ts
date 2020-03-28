@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { User } from '../../models/user';
 import { AuthProvider } from '../../providers/auth/auth';
 import { DataProvider } from '../../providers/data/data';
-import { COLLECTION, STORAGE_KEY } from '../../utils/consts';
+import { COLLECTION, STORAGE_KEY, DEFAULT_PIC } from '../../utils/consts';
 import { ChatPage } from '../chat/chat';
 import { bounceIn } from '../../utils/animations';
 import { FirebaseApiProvider } from '../../providers/firebase-api/firebase-api';
@@ -90,12 +90,8 @@ export class DashboardPage {
     this.navCtrl.push(ChatPage, { user });
   }
 
-  getDefaultProfilePic(): string {
-    return '/assets/imgs/user.svg';
-  }
-
   getProfilePicture(): string {
-    return 'assets/imgs/user.svg';
+    return this.profile && this.profile.profilePic ? this.profile.profilePic : DEFAULT_PIC;
   }
 
   capitalizeFirstLetter(str: string): string {

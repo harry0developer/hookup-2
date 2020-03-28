@@ -34,10 +34,12 @@ export class MediaProvider {
 
   takePhoto(): Promise<any> {
     const camOptions = {
-      quality: 100,
+      quality: 90,
       destinationType: this.camera.DestinationType.DATA_URL,
       sourceType: this.camera.PictureSourceType.CAMERA,
       encodingType: this.camera.EncodingType.JPEG,
+      allowEdit: true,
+      targetHeight: 300,
       saveToPhotoAlbum: true
     };
     return this.camera.getPicture(camOptions);
@@ -47,7 +49,9 @@ export class MediaProvider {
     const camOptions = {
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       destinationType: this.camera.DestinationType.DATA_URL,
-      quality: 100,
+      quality: 90,
+      allowEdit: true,
+      targetHeight: 300,
       encodingType: this.camera.EncodingType.JPEG,
     };
     return this.camera.getPicture(camOptions);

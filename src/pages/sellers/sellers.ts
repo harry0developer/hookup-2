@@ -2,7 +2,7 @@ import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, ModalController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
 import { SellerDetailsPage } from '../seller-details/seller-details';
-import { COLLECTION, USER_TYPE, MESSAGES, STORAGE_KEY } from '../../utils/consts';
+import { COLLECTION, USER_TYPE, MESSAGES, STORAGE_KEY, DEFAULT_PIC } from '../../utils/consts';
 import { User } from '../../models/user';
 import { AuthProvider } from '../../providers/auth/auth';
 import { MediaProvider } from '../../providers/media/media';
@@ -153,7 +153,7 @@ export class SellersPage {
   }
 
   getProfilePicture(user): string {
-    return user && user.profilePic ? user.profilePic : 'assets/imgs/user.svg';
+    return user && user.profilePic ? user.profilePic : DEFAULT_PIC;
   }
 
   capitalizeFirstLetter(str: string): string {

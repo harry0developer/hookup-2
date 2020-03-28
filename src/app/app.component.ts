@@ -10,7 +10,7 @@ import { SellersPage } from '../pages/sellers/sellers';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { User } from '../models/user';
 import { DataProvider } from '../providers/data/data';
-import { NETWORK, STORAGE_KEY, USER_TYPE, EVENTS } from '../utils/consts';
+import { NETWORK, STORAGE_KEY, USER_TYPE, EVENTS, DEFAULT_PIC } from '../utils/consts';
 import { IntroPage } from '../pages/intro/intro';
 import { AuthProvider } from '../providers/auth/auth';
 import { ChatsPage } from '../pages/chats/chats';
@@ -96,7 +96,7 @@ export class MyApp {
   }
 
   getProfilePicture(): string {
-    return this.profile && this.profile.profilePic ? this.profile.profilePic : 'assets/imgs/user.svg';
+    return this.profile && this.profile.profilePic ? this.profile.profilePic : DEFAULT_PIC;
   }
 
   openPage(page) {
