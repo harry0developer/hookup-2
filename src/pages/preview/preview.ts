@@ -13,12 +13,6 @@ import { FeedbackProvider } from '../../providers/feedback/feedback';
   templateUrl: 'preview.html',
 })
 export class PreviewPage {
-  // images = [
-  //   'https://firebasestorage.googleapis.com/v0/b/hooker-6ca60.appspot.com/o/images%2FHfkpiBaaBxh4Wala65cMDWa5gtq2%2F1581458804.jpg?alt=media&token=db5f87d5-9024-4182-9e31-2d2e88342f97',
-  //   'https://firebasestorage.googleapis.com/v0/b/hooker-6ca60.appspot.com/o/images%2FHfkpiBaaBxh4Wala65cMDWa5gtq2%2F1581458784.jpg?alt=media&token=06ad2ef2-f400-4e00-a7ce-a047e7e82354',
-  //   'https://firebasestorage.googleapis.com/v0/b/hooker-6ca60.appspot.com/o/images%2FHfkpiBaaBxh4Wala65cMDWa5gtq2%2F1581458816.jpg?alt=media&token=78fa09b3-1924-458b-a3fc-2c0d54d69272'
-  // ];
-
   images = [];
   profile: User;
   @ViewChild(Slides) slides: Slides;
@@ -42,30 +36,34 @@ export class PreviewPage {
   }
 
   removeImage(img) {
-    this.feedbackProvider.presentLoading('Deleting photo...');
-    this.mediaProvider.removeImageByFilename(this.profile.uid, img.url).then(r => {
-      this.feedbackProvider.dismissLoading();
-      this.feedbackProvider.presentLoading('Updating profile...');
-      this.firebaseApiProvider.removeItem(`${COLLECTION.images}/${this.profile.uid}`, img.key).then(() => {
+    if (img.path !== this.profile.profilePic) {
+      this.feedbackProvider.presentLoading('Deleting photo...');
+      this.mediaProvider.removeImageByFilename(this.profile.uid, img.url).then(r => {
         this.feedbackProvider.dismissLoading();
-        if (this.profile.profilePic === img.path) {
-          this.profile.profilePic = "";
-        }
-        this.viewCtrl.dismiss(ACTION.delete);
-        this.firebaseApiProvider.addItemToLocalStorage(STORAGE_KEY.user, this.profile);
-        this.firebaseApiProvider.updateItem(`${COLLECTION.users}`, `${this.profile.uid}`, { profilePic: '' }).then(() => {
-          console.log('User profile pic update');
+        this.feedbackProvider.presentLoading('Updating profile...');
+        this.firebaseApiProvider.removeItem(`${COLLECTION.images}/${this.profile.uid}`, img.key).then(() => {
+          this.feedbackProvider.dismissLoading();
+          if (this.profile.profilePic === img.path) {
+            this.profile.profilePic = "";
+          }
+          this.viewCtrl.dismiss(ACTION.delete);
+          this.firebaseApiProvider.addItemToLocalStorage(STORAGE_KEY.user, this.profile);
+          this.firebaseApiProvider.updateItem(`${COLLECTION.users}`, `${this.profile.uid}`, { profilePic: '' }).then(() => {
+            console.log('User profile pic update');
+          }).catch(err => {
+            console.log('user profile pic failed');
+          });
         }).catch(err => {
-          console.log('user profile pic failed');
-        });
+          this.feedbackProvider.dismissLoading();
+          console.log(err);
+        })
       }).catch(err => {
         this.feedbackProvider.dismissLoading();
         console.log(err);
-      })
-    }).catch(err => {
-      this.feedbackProvider.dismissLoading();
-      console.log(err);
-    })
+      });
+    } else {
+      this.feedbackProvider.presentAlert("Cannot delete photo", "This photo cannot be deleted because it is your profile photo");
+    }
   }
 
   previousSlide() {

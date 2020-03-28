@@ -61,12 +61,12 @@ export class ChatsPage {
     this.searching = true;
   }
 
-  viewUserProfile(user) {
-    this.navCtrl.push(ChatPage, { user });
+  getDefaultProfilePic() {
+    return 'assets/imgs/user.svg';
   }
 
-  getProfilePicture(user): string {
-    return user.avatar;
+  viewUserProfile(user) {
+    this.navCtrl.push(ChatPage, { user });
   }
 
   capitalizeFirstLetter(str: string): string {

@@ -22,7 +22,7 @@
     <ion-card *ngFor="let user of users">
       <ion-item (tap)="viewUserProfile(user)">
         <ion-avatar item-start>
-          <img [src]="getProfilePicture(user)">
+          <!-- <img src="{{user.profilePic}}" onerror="this.onerror=null;this.src='getDefaultProfilePic()';" > -->
         </ion-avatar>
         <h2 class="name">
           {{capitalizeFirstLetter(user?.nickname)}} 

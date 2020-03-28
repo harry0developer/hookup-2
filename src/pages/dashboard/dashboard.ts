@@ -90,8 +90,12 @@ export class DashboardPage {
     this.navCtrl.push(ChatPage, { user });
   }
 
-  getProfilePicture(user): string {
-    return !!user.profilePic ? user.profilePic : `assets/imgs/${user.gender}.svg`;
+  getDefaultProfilePic(): string {
+    return '/assets/imgs/user.svg';
+  }
+
+  getProfilePicture(): string {
+    return 'assets/imgs/user.svg';
   }
 
   capitalizeFirstLetter(str: string): string {

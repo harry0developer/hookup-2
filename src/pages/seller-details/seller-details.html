@@ -13,8 +13,15 @@
   <div class="skeleton"  *ngIf="isLoading">
     <skeleton-item height="460px"></skeleton-item>
     <div class="content">
-      <skeleton-item class="text" height="10px" width="180px" margin="0 auto"></skeleton-item>
-      <skeleton-item class="text" height="10px" width="220px" margin="0 auto"></skeleton-item>
+      <skeleton-item class="text" height="10px" width="80px" margin="0 auto"></skeleton-item>
+      <skeleton-item class="text" height="10px" width="120px" margin="0 auto"></skeleton-item>
+
+      <div class="block">
+        <skeleton-item class="text" height="10px" width="60px" ></skeleton-item>
+        <skeleton-item class="text" height="10px" width="60px" ></skeleton-item>
+        <skeleton-item class="text" height="10px" width="60px" ></skeleton-item>
+        <skeleton-item class="text" height="10px" width="60px" ></skeleton-item>
+      </div>
     </div> 
   </div>
 
@@ -45,7 +52,6 @@
     <ion-badge *ngIf="user.age">{{user.age}} yrs</ion-badge>
     <ion-badge *ngIf="user.height">{{user.height}} cm</ion-badge>
     <ion-badge *ngIf="user.bodyType">{{capitalizeFirstLetter(user.bodyType)}}</ion-badge>
-    <p>{{user.description}}</p>
   </div>
 
   <ion-fab right bottom (click)="openChats(user)"  *ngIf="!isLoading">  

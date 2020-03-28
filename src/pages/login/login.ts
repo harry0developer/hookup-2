@@ -116,7 +116,6 @@ export class LoginPage {
   navigate() {
     this.dataProvider.addItemToLocalStorage(STORAGE_KEY.user, this.profile);
     this.ionEvents.publish(EVENTS.loggedIn, this.profile);
-    this.firebaseApiProvider.getUserChat();
     this.profile.userType === USER_TYPE.buyer ? this.navCtrl.setRoot(SellersPage, { user: this.profile }) : this.navCtrl.setRoot(DashboardPage, { user: this.profile })
   }
 

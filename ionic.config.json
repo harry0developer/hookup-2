@@ -1,5 +1,7 @@
 {
   "name": "hoo",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

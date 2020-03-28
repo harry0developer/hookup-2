@@ -95,8 +95,8 @@ export class MyApp {
     this.networkModal.present();
   }
 
-  getUserProfile(user): string {
-    return user && user.profilePic ? user.profilePic : `assets/imgs/${user.gender}.svg`;
+  getProfilePicture(): string {
+    return this.profile && this.profile.profilePic ? this.profile.profilePic : 'assets/imgs/user.svg';
   }
 
   openPage(page) {

@@ -157,7 +157,7 @@ export class ProfilePage {
   }
 
   getProfilePicture(): string {
-    return !!this.profile.profilePic ? this.profile.profilePic : `assets/imgs/users/${this.profile.gender}.svg`;
+    return this.profile && this.profile.profilePic ? this.profile.profilePic : 'assets/imgs/user.svg';
   }
 
   capitalizeFirstLetter(str): string {

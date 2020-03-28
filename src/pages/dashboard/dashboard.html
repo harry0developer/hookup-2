@@ -12,7 +12,7 @@
 <ion-content>
   <div class="top" *ngIf="profile && !isLoading">
     <div class="profile">
-      <img alt="profile" [src]="getProfilePicture(profile)" class="animated zoomIn" #img>
+      <img class="profile-image animated slideInDown" src="getProfilePicture()">
     </div> 
     <h2 class="animated slideInLeft">
       {{capitalizeFirstLetter(profile?.nickname)}}

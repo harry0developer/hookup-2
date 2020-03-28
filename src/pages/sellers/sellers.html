@@ -46,7 +46,7 @@
           <ion-card (tap)="viewProfile(user)"> 
             <ion-item>
               <ion-avatar>
-                <img [src]="getUserProfile(user)">
+                <img class="animated slideInDown profile-picture" [src]="getProfilePicture(user)">
               </ion-avatar>
               <div class="info">
                 <h2>

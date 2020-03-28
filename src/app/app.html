@@ -1,7 +1,7 @@
 <ion-menu [content]="content"  persistent="true" >
   <ion-content class="user-profile">
     <div *ngIf="profile" class="profile">
-      <img [src]="getUserProfile(profile)" alt="profile" class="profile-picture">
+      <img class="profile-image animated slideInDown profile-picture" [src]="getProfilePicture()">
       <h2>{{profile.nickname}}</h2>
       <p>{{profile.email}}</p>
     </div>

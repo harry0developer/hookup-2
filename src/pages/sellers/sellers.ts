@@ -152,9 +152,8 @@ export class SellersPage {
     });
   }
 
-
-  getUserProfile(user: User): string {
-    return user && user.avatar;
+  getProfilePicture(user): string {
+    return user && user.profilePic ? user.profilePic : 'assets/imgs/user.svg';
   }
 
   capitalizeFirstLetter(str: string): string {

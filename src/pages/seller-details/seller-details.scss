@@ -170,5 +170,13 @@
     .content {
       padding: 0;
     }
+   
+  }
+  .block {
+    width: 100%;
+    text-align: center;
+    skeleton-item {
+      display: inline-block;
+    }
   }
 }
