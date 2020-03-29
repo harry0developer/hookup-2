@@ -1,7 +1,7 @@
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
-import { COLLECTION, DEFAULT_PIC } from '../../utils/consts';
+import { COLLECTION, DEFAULT_PIC_PRIMARY } from '../../utils/consts';
 import { User } from '../../models/user';
 import { FirebaseApiProvider } from '../../providers/firebase-api/firebase-api';
 import { ChatPage } from '../chat/chat';
@@ -62,7 +62,7 @@ export class ChatsPage {
   }
 
   getProfilePicture(user): string {
-    return user && user.profilePic ? user.profilePic : DEFAULT_PIC;
+    return user && user.profilePic ? user.profilePic : DEFAULT_PIC_PRIMARY;
   }
 
   viewUserProfile(user) {

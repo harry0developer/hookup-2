@@ -10,11 +10,12 @@ import { SellersPage } from '../pages/sellers/sellers';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { User } from '../models/user';
 import { DataProvider } from '../providers/data/data';
-import { NETWORK, STORAGE_KEY, USER_TYPE, EVENTS, DEFAULT_PIC } from '../utils/consts';
+import { NETWORK, STORAGE_KEY, USER_TYPE, EVENTS, DEFAULT_PIC_WHITE } from '../utils/consts';
 import { IntroPage } from '../pages/intro/intro';
 import { AuthProvider } from '../providers/auth/auth';
 import { ChatsPage } from '../pages/chats/chats';
 import { SettingsPage } from '../pages/settings/settings';
+import { itemSlideIn } from '../utils/animations';
 
 @Component({
   templateUrl: 'app.html'
@@ -39,7 +40,6 @@ export class MyApp {
     public splashScreen: SplashScreen) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
     this.pages = {
       sellersPage: SellersPage,
       dashboardPage: DashboardPage,
@@ -47,7 +47,6 @@ export class MyApp {
       chatsPage: ChatsPage,
       settingsPage: SettingsPage
     }
-
   }
 
   initializeApp() {
@@ -63,7 +62,6 @@ export class MyApp {
       this.profile = this.dataProvider.getItemFromLocalStorage(STORAGE_KEY.user);
       this.ionEvents.subscribe(EVENTS.loggedIn, (user) => {
         this.profile = user;
-        console.log(user);
       });
       this.network.onchange().subscribe(connection => {
         if (connection.type.toLowerCase() === NETWORK.offline) {
@@ -96,7 +94,7 @@ export class MyApp {
   }
 
   getProfilePicture(): string {
-    return this.profile && this.profile.profilePic ? this.profile.profilePic : DEFAULT_PIC;
+    return this.profile && this.profile.profilePic ? this.profile.profilePic : DEFAULT_PIC_WHITE;
   }
 
   openPage(page) {
@@ -112,7 +110,6 @@ export class MyApp {
       this.nav.setRoot(HomePage);
     });
   }
-
 
   presentLogoutActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({

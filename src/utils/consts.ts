@@ -60,7 +60,8 @@ export const STATUS = {
     deactive: 'deactive'
 }
 
-export const DEFAULT_PIC = '/assets/imgs/user.svg'
+export const DEFAULT_PIC_PRIMARY = '/assets/imgs/user-primary.svg'
+export const DEFAULT_PIC_WHITE = '/assets/imgs/user-white.svg'
 export const EMAIL_EXISTS = 'auth/email-already-in-use';
 export const USER_NOT_FOUND = 'auth/user-not-found';
 export const INVALID_PASSWORD = 'auth/wrong-password';

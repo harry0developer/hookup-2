@@ -3,6 +3,23 @@ page-chats {
         background-color: $light-grey;
     }
 
+    .sub-header__title {
+        height: 20px;
+    }
+    
+    .sub-header, .content {
+        background-color: $light;
+    } 
+
+    .toolbar .searchbar-ios .searchbar-input {
+        background-color:$light;
+        padding: 20px 30px;
+    }
+
+    .searchbar-ios .searchbar-search-icon {
+        top: 14px;
+    }
+
 	.user {  
         ion-item {
             height: 65px;

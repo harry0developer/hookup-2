@@ -1,4 +1,8 @@
 @import '../theme/main.scss';
+
+ion-menu {
+	height: 100%;
+}
 .sub-header {
 	background-color: $light-grey;
 }
@@ -71,14 +75,14 @@
     }
     
 
-    .wave {
-        background: url('/assets/imgs/background.svg') no-repeat;
-        height: 100px;
-        background-position-y: bottom;
-        position: relative;
-        bottom: -60px;
-        left: 0;
-	} 
+    // .wave {
+    //     background: url('/assets/imgs/background.svg') no-repeat;
+    //     height: 100px;
+    //     background-position-y: bottom;
+    //     position: relative;
+    //     bottom: -60px;
+    //     left: 0;
+	// } 
 
     scroll-content {
         margin-bottom: 0 !important;

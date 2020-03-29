@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, ModalController, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ModalController, ActionSheetController, Platform } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 import { FeedbackProvider } from '../../providers/feedback/feedback';
@@ -8,8 +8,8 @@ import { User } from '../../models/user';
 import { TermsPage } from '../terms/terms';
 import { ReportBugPage } from '../report-bug/report-bug';
 import { STORAGE_KEY, COLLECTION, STATUS } from '../../utils/consts';
-
-
+import { AppVersion } from '@ionic-native/app-version';
+import { OpenNativeSettings } from '@ionic-native/open-native-settings';
 
 @IonicPage()
 @Component({
@@ -17,8 +17,8 @@ import { STORAGE_KEY, COLLECTION, STATUS } from '../../utils/consts';
   templateUrl: 'settings.html',
 })
 export class SettingsPage {
-
   profile: User;
+  version;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -26,12 +26,20 @@ export class SettingsPage {
     public feedbackProvider: FeedbackProvider,
     public firebaseApiProvider: FirebaseApiProvider,
     public app: App,
+    private platform: Platform,
+    private appVersion: AppVersion,
+    private openNativeSettings: OpenNativeSettings,
     public actionSheetCtrl: ActionSheetController,
     public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
     this.profile = this.firebaseApiProvider.getLoggedInUser();
+    if (this.platform.is(('cordova'))) {
+      this.appVersion.getVersionNumber().then(v => {
+        this.version = v;
+      });
+    }
   }
 
   deactivateAccout() {
@@ -64,6 +72,38 @@ export class SettingsPage {
     });
 
     actionSheet.present();
+  }
+
+
+  presentLogoutActionsheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'You are about to logout',
+      buttons: [
+        {
+          text: 'Yes, Logout',
+          role: 'destructive',
+          handler: () => {
+            this.logout();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
+  }
+
+  allowLocationAccess() {
+    this.openNativeSettings.open('location').then(res => {
+    }).catch(err => {
+      this.feedbackProvider.presentToast('Oops an error has occured, please try again.');
+    })
   }
 
   reportBug() {

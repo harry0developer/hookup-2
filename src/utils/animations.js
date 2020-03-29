@@ -24,6 +24,18 @@ export const slideIn = trigger('ItemsAnimation', [
     ])
 ]);
 
+export const itemSlideIn = trigger('ItemsSlideAnimation', [
+    transition('* => *', [
+        query('ion-item', style({ opacity: 0, transform: 'translateX(-40px)' })),
+        query('ion-item', stagger('200ms', [
+            animate('300ms ease-out', style({ opacity: 1, transform: 'translateX(0)' })),
+        ])),
+        query('ion-item', [
+            animate(1000, style('*'))
+        ])
+    ])
+]);
+
 export const listSlideUp = trigger('ListItemsAnimation', [
     transition('* => *', [
         query('ion-list', style({ opacity: 0, transform: 'translateY(40px)' })),
@@ -36,7 +48,7 @@ export const listSlideUp = trigger('ListItemsAnimation', [
     ])
 ]);
 
-export const itemSlideUp = trigger('ItemsAnimation', [
+export const itemSlideUp = trigger('ItemsSLideUpAnimation', [
     transition('* => *', [
         query('ion-item', style({ opacity: 0, transform: 'translateY(40px)' })),
         query('ion-item', stagger('200ms', [

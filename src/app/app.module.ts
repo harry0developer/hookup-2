@@ -28,21 +28,17 @@ import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import { RatingModule } from "ngx-rating";
 import { ProfilePage } from '../pages/profile/profile';
 import { ChatPage } from '../pages/chat/chat';
-// import { ImagePage } from '../pages/image/image';
 import { Camera } from '@ionic-native/camera';
 import { WindowProvider } from '../providers/window/window';
 import { NationalityPage } from '../pages/nationality/nationality';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { SellersPage } from '../pages/sellers/sellers';
 import { SellerDetailsPage } from '../pages/seller-details/seller-details';
-// import { ViewedPage } from '../pages/viewed/viewed';
-// import { RatedPage } from '../pages/rated/rated';
 import { IntroPage } from '../pages/intro/intro';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { TermsPage } from '../pages/terms/terms';
 import { SetupPage } from '../pages/setup/setup';
-// import { PlacesPage } from '../pages/places/places';
 import { LocationProvider } from '../providers/location/location';
 
 import { Geolocation } from '@ionic-native/geolocation';
@@ -57,6 +53,8 @@ import { ReportBugPage } from '../pages/report-bug/report-bug';
 import { ChatsPage } from '../pages/chats/chats';
 import { SettingsPage } from '../pages/settings/settings';
 import { DefaultProfilePage } from '../pages/default-profile/default-profile';
+import { OpenNativeSettings } from '@ionic-native/open-native-settings';
+import { AppVersion } from '@ionic-native/app-version';
 
 @NgModule({
   declarations: [
@@ -65,18 +63,14 @@ import { DefaultProfilePage } from '../pages/default-profile/default-profile';
     ForgotPasswordPage,
     ProfilePage,
     ChatPage,
-    // ImagePage,
     ChatsPage,
     NationalityPage,
     DashboardPage,
     SellersPage,
     SellerDetailsPage,
-    // ViewedPage,
-    // RatedPage,
     IntroPage,
     HomePage,
     TermsPage,
-    // PlacesPage,
     SetupPage,
     VisitorPage,
     FilterPage,
@@ -108,18 +102,14 @@ import { DefaultProfilePage } from '../pages/default-profile/default-profile';
     ForgotPasswordPage,
     ProfilePage,
     ChatPage,
-    // ImagePage,
     ChatsPage,
     NationalityPage,
     DashboardPage,
     SellersPage,
     SellerDetailsPage,
-    // ViewedPage,
-    // RatedPage,
     IntroPage,
     HomePage,
     TermsPage,
-    // PlacesPage,
     SetupPage,
     VisitorPage,
     FilterPage,
@@ -145,7 +135,9 @@ import { DefaultProfilePage } from '../pages/default-profile/default-profile';
     Geolocation,
     MediaProvider,
     FirebaseApiProvider,
-    Network
+    Network,
+    OpenNativeSettings,
+    AppVersion
   ]
 })
 export class AppModule { }
