@@ -1,16 +1,17 @@
 page-home {
     .content {
-        background: linear-gradient(
-            rgb(242, 242, 242), 
-            rgba(242, 242, 242, 0.4)
-          ),
-          url($bg);
+        background: $primary;
     }
+
     .brand { 
         text-align: center;
         margin: 40% 0;
         .logo {
             width: 100px;
+            border: 4px solid #fff;
+            padding: 10px;
+            border-radius: 50%;
+            height: 100px;
         }
     }
 
@@ -22,6 +23,7 @@ page-home {
         .button {
             width: 200px;
             padding: 20px 0;
+            font-weight: bold;
         }
     }
     
@@ -32,6 +34,11 @@ page-home {
     
     .action-sheet-icon {
         font-size: 1em !important;
+    }
+
+    .button {
+        background-color: $white;
+        color: $primary;
     }
     
     .terms {

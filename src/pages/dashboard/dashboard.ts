@@ -3,14 +3,13 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { User } from '../../models/user';
 import { AuthProvider } from '../../providers/auth/auth';
 import { DataProvider } from '../../providers/data/data';
-import { COLLECTION, STORAGE_KEY, DEFAULT_PIC_PRIMARY } from '../../utils/consts';
+import { COLLECTION, DEFAULT_PIC_PRIMARY } from '../../utils/consts';
 import { ChatPage } from '../chat/chat';
 import { bounceIn } from '../../utils/animations';
 import { FirebaseApiProvider } from '../../providers/firebase-api/firebase-api';
 import { MediaProvider } from '../../providers/media/media';
 import firebase from 'firebase';
 import { FeedbackProvider } from '../../providers/feedback/feedback';
-import { DefaultProfilePage } from '../default-profile/default-profile';
 
 
 @IonicPage()
@@ -41,13 +40,8 @@ export class DashboardPage {
 
   ionViewDidLoad() {
     this.profile = this.firebaseApiProvider.getLoggedInUser();
-    // this.firstTimeLogin = this.firebaseApiProvider.getItemFromLocalStorage(STORAGE_KEY.firstTimeLogin);
     this.isLoading = true;
-    this.chooseProfilePictureModal();
 
-    // if (this.firstTimeLogin) {
-    //   this.chooseProfilePictureModal();
-    // }
     this.chatRef.child(this.profile.uid).on('value', snap => {
       this.zone.run(() => {
         let user;
@@ -58,17 +52,6 @@ export class DashboardPage {
       });
     });
 
-  }
-
-  chooseProfilePictureModal() {
-    console.log('chooseProfilePictureModal');
-
-    let profileModal = this.modalCtrl.create(DefaultProfilePage);
-    profileModal.onDidDismiss(data => {
-      console.log(data);
-      this.firebaseApiProvider.addItemToLocalStorage(STORAGE_KEY.firstTimeLogin, false);
-    });
-    profileModal.present();
   }
 
   getUserById(id) {

@@ -4,7 +4,7 @@ import { User } from '../../models/user';
 import { DataProvider } from '../../providers/data/data';
 import { FirebaseApiProvider } from '../../providers/firebase-api/firebase-api';
 import * as firebase from 'firebase';
-import { COLLECTION } from '../../utils/consts';
+import { COLLECTION, DEFAULT_PIC_WHITE, DEFAULT_PIC_PRIMARY } from '../../utils/consts';
 import { Message } from '../../models/message';
 import { FeedbackProvider } from '../../providers/feedback/feedback';
 
@@ -72,16 +72,13 @@ export class ChatPage {
     return this.dataProvider.capitalizeFirstLetter(str);
   }
 
-  getProfilePic(user: User): string {
-    if (user && user.profilePic) {
-      return user.profilePic
-    } else if (user && user.gender) {
-      return `assets/imgs/users/${user.gender}.svg`
-    }
-    return '';
+
+  getProfilePicture(user: User): string {
+    return user && user.profilePic ? user.profilePic : DEFAULT_PIC_PRIMARY;
   }
 
-  getMomentFromNow(timestamp) {
+
+  getMomentFromNow(timestamp: string) {
     return this.firebaseApiProvider.getDateTimeMoment(timestamp);
   }
 

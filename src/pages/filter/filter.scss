@@ -3,10 +3,30 @@ page-filter {
     .content {
         background-color: $light-grey;
     }
-    ion-item-divider {
-        span {
-            font-weight: bold;
-            font-size: 16px;
+
+    .bar-button-ios {
+        font-size: 2em;
+    }
+
+    // ion-item-divider {
+    //     span {
+    //         font-weight: bold;
+    //         font-size: 16px;
+    //     }
+    // }
+
+    .item-divider {
+        font-weight: bold;
+        font-size: 1.2em;
+        color: $black;
+        background-color: $white;
+        ion-icon {
+            min-height: 0;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+        .item-inner {
+            margin-left: 0px !important;
         }
     }
 
@@ -21,6 +41,7 @@ page-filter {
             padding-left: 10px;
         }
     }
+    
     .filter-controls {
         width: 200px;
         margin: 0 auto;

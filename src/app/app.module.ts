@@ -23,7 +23,6 @@ import { AuthProvider } from '../providers/auth/auth';
 import { FeedbackProvider } from '../providers/feedback/feedback';
 import { DataProvider } from '../providers/data/data';
 import { SignupPage } from '../pages/signup/signup';
-import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 
 import { RatingModule } from "ngx-rating";
 import { ProfilePage } from '../pages/profile/profile';
@@ -52,9 +51,9 @@ import { NetworkErrorPage } from '../pages/network-error/network-error';
 import { ReportBugPage } from '../pages/report-bug/report-bug';
 import { ChatsPage } from '../pages/chats/chats';
 import { SettingsPage } from '../pages/settings/settings';
-import { DefaultProfilePage } from '../pages/default-profile/default-profile';
 import { OpenNativeSettings } from '@ionic-native/open-native-settings';
 import { AppVersion } from '@ionic-native/app-version';
+import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 
 @NgModule({
   declarations: [
@@ -79,7 +78,6 @@ import { AppVersion } from '@ionic-native/app-version';
     ReportBugPage,
     LoginPage,
     SettingsPage,
-    DefaultProfilePage
   ],
   imports: [
     BrowserModule,
@@ -118,7 +116,6 @@ import { AppVersion } from '@ionic-native/app-version';
     ReportBugPage,
     LoginPage,
     SettingsPage,
-    DefaultProfilePage
   ],
   providers: [
     StatusBar,

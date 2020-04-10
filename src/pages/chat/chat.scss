@@ -1,6 +1,10 @@
 page-chat {
-    .sub-header, .content{
-        background-color: $light;
+    .content{
+        background: linear-gradient(
+            rgba(241, 241, 241, 0.60), 
+            rgba(241, 241, 241, 0.60)
+          ),
+          url($bg);
     }
 
     .item-ios [item-start], .item-md [item-start]{
@@ -29,17 +33,6 @@ page-chat {
         right: 0;
     }
 
-    ion-avatar {
-        margin-left: 20px;
-        display: inline;
-        img {
-            display: inline;
-            width: 40px;
-            height: 40px;
-            border: 2px solid #db4056;
-            border-radius: 50%;
-        }
-    }
 
     skeleton-item.right  {
         div{
@@ -97,15 +90,34 @@ page-chat {
         }
     }
 
+    ion-avatar {
+        img {
+            display: inline;
+            width: 60px;
+            height: 60px;
+            padding: 4px;
+            border: 3px solid $primary;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+    }
+
     .no-chats {
-        text-align: center;
+        text-align: center; 
+        margin: 40% 0;
+        height: 100px;
+        .big-name {
+            font-size: 26px;
+            color: $primary;
+            font-family: 'Pacifico', cursive;
+        }
         i {
-            font-size: 21px;
+            font-size: 3em;
             margin-top: 50%;
             margin-bottom: 10px;
         }
         p {
-            font-size: 12px;
+            font-size: 14px;
         }
     }
 }

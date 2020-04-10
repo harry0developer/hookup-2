@@ -1,12 +1,9 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
+<ion-header> 
 </ion-header>
 
 <ion-content>
   <div class="brand">
-    <img src="assets/imgs/logo.svg"class="logo">
+    <img src="assets/imgs/logo-white.svg"class="logo">
   </div>
 
   <ion-list>
@@ -38,6 +35,9 @@
 
       <div class="buttons-group">
         <button ion-button small round [disabled]="!phonenumber.valid" (click)="loginWithPhoneNumber()"> Login</button>
+        <button ion-button small round clear (click)="dismiss()">
+          Cancel
+        </button>
       </div>
     </div>
   </ion-list>
@@ -80,11 +80,11 @@
 
       <div class="buttons-group">
         <button ion-button small round  [disabled]="!email.valid || !password.valid" (click)="loginWithEmailAndPassword()"> Login</button>
-        <button ion-button small round clear (click)="dismiss()"> Cancel </button>
+        <button ion-button small round clear (click)="dismiss()">
+          Cancel
+        </button>
       </div>
     
     </div>
   </ion-list>
-  <p class="terms">Terms and conditions apply</p>
-
 </ion-content>

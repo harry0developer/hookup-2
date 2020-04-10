@@ -7,6 +7,7 @@ import { FeedbackProvider } from '../../providers/feedback/feedback';
 import { COLLECTION } from '../../utils/consts';
 import { FirebaseApiProvider } from '../../providers/firebase-api/firebase-api';
 import { DataProvider } from '../../providers/data/data';
+import { TermsPage } from '../terms/terms';
 
 
 @IonicPage()

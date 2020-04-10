@@ -1,15 +1,16 @@
 @import '../theme/main.scss';
+* {
+	font-family: 'Baloo Paaji 2', cursive;
+}
 
 ion-menu {
 	height: 100%;
 }
-.sub-header {
-	background-color: $light-grey;
-}
+ 
 .user-profile {
     background: linear-gradient(
-      rgba(241, 241, 241, 0.60), 
-      rgba(241, 241, 241, 0.60)
+      rgba(241, 241, 241, 0.7), 
+      rgba(241, 241, 241, 0.7)
     ),
     url($bg);
     height: 100%;
@@ -52,10 +53,7 @@ ion-menu {
     }
 
     .header-wave { 
-        background:  url($wave-header) no-repeat;
-        background-size: cover;
-        background-position-x: center;
-        background-color: $light-grey;
+		background-color: $primary;
         height: 60px;
     }
     .menu {
@@ -64,8 +62,17 @@ ion-menu {
 			background-color: transparent !important;
             color: $primary !important;
 			i {
-				margin-right: 10px;
-				font-size: 18px;
+				margin-right: 4px;
+				// font-size: 18px;
+
+				border: 2px solid;
+				padding: 7px 0 0 7px;
+				width: 34px;
+				height: 34px;
+				border-radius: 50%;
+			}
+			i.fa-user {
+				padding-left: 8px;
 			}
 		} 
 		.item-inner{

@@ -1,14 +1,13 @@
 <ion-header>
-  <ion-navbar>
+  <!-- <ion-navbar color="light">
     <ion-title>Signup</ion-title>
-  </ion-navbar>
+  </ion-navbar> -->
 </ion-header>
 
 <ion-content>
   <div class="brand">
-    <img src="assets/imgs/logo.svg"class="logo">
+    <img src="assets/imgs/logo-white.svg"class="logo">
   </div>
-
   <ion-list>
     <div padding *ngIf="signupType=='phoneNumber'">  
       <h2 >Signup with phone number</h2>
@@ -49,10 +48,7 @@
 
       <div class="buttons-group">
         <button ion-button small round [disabled]="!flag.valid || !phonenumber.valid || !nickname.valid" (click)="signupWithPhoneNumber()">Signup</button>
-        <button ion-button small round clear icon-start (click)="cancelSignup()">
-          <ion-icon name="arrow-back"></ion-icon>
-          Cancel
-        </button>
+        <button ion-button small round clear (click)="dismiss()"> Cancel </button>
       </div>
     </div>
   </ion-list>
@@ -114,7 +110,4 @@
     
     </div>
   </ion-list>
-
-  <p class="terms">Terms and conditions apply</p>
-
 </ion-content>

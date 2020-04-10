@@ -11,6 +11,7 @@ import { DataProvider } from '../../providers/data/data';
 import { Geo } from '../../models/location';
 import { DashboardPage } from '../dashboard/dashboard';
 import { SellersPage } from '../sellers/sellers';
+import { TermsPage } from '../terms/terms';
 
 
 @IonicPage()
@@ -104,8 +105,7 @@ export class LoginPage {
 
   updateUserProfile(user: User, location: Geo) {
     this.feedbackProvider.presentLoading('Updating location...');
-    this.firebaseApiProvider.updateItem(COLLECTION.users, user.uid, { location }).then(loc => {
-      console.log(loc);
+    this.firebaseApiProvider.updateItem(COLLECTION.users, user.uid, { location }).then(() => {
       this.feedbackProvider.dismissLoading();
     }).catch(err => {
       console.log(err);

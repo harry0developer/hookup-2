@@ -1,11 +1,7 @@
 <ion-header>
   <ion-navbar color="white">  
+    <ion-title>{{capitalizeFirstLetter(person?.nickname)}}</ion-title>
    </ion-navbar>
-  <div class="sub-header">
-    <h2 class="sub-header__title">
-      {{capitalizeFirstLetter(person?.nickname)}}
-    </h2>
-  </div>  
 </ion-header>
 
 <ion-content padding-top #content>
@@ -18,10 +14,20 @@
     </chat-bubble> 
   </ion-list>
 
-  <div class="no-chats" *ngIf="!messageList || messageList.length < 1">
-    <i class="fa fa-comment"></i>
-    <p>You do not have any chats yet.</p>
-  </div> 
+  <ion-card>
+    <div class="no-chats" *ngIf="!messageList || messageList.length < 1">
+      <ion-avatar item-left>
+        <img [src]="getProfilePicture(person)">
+      </ion-avatar>
+      <p>Start a conversation with 
+        <br>
+        <span class="big-name">
+          {{capitalizeFirstLetter(person?.nickname)}}
+        </span>
+      </p>
+    </div> 
+  </ion-card>
+
 </ion-content>
 
 <ion-footer>

@@ -1,7 +1,7 @@
-$primary: #e44285;
-$secondary: #d559b9;
+$primary: #B00539;
+$secondary: #ff9ebb;
 $white: #fff;
-$danger: #ef6161;
+$danger: #fb3737;
 $grey: #cecece;
 $light: #f4f4f4;
 $light-grey: #f1f1f1f1;
@@ -12,10 +12,17 @@ $black: #000;
 $bg: '/assets/imgs/bg.png';
 $wave-header: '/assets/imgs/header-bg.svg';
 
+$primary1: #B00539;
+$primary2: #DE1B55;
+$primary3: #F67A92;
+$primary4: #C1C1C1;
+$primary5: #F6F6F6;
+
+//linear-gradient(to right top, $primary1, $primary2, $primary3, $primary3, $primary3)
 h2 {
     font-size: 1.2em;
     text-align: center;
-    color: $dark;
+    color: $black;
 }
 
 .validation {
@@ -25,7 +32,7 @@ h2 {
 }
  
 .action-sheet-title {
-    color: $dark !important;
+    color: $black !important;
 }
 
 .action-sheet-icon {
@@ -56,7 +63,8 @@ h2 {
 
 .sub-header {
     padding-bottom: 12px; 
-    background:  url('/assets/imgs/header-bg.svg') no-repeat;
+    // background:  url('/assets/imgs/header-bg.svg') no-repeat;
+    background: $primary;
     background-size: cover;
     background-position-x: center;
     &__title {

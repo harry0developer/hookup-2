@@ -1,7 +1,7 @@
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, Events, ModalController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
-import { STORAGE_KEY, COLLECTION, OBJECT_NOT_FOUND, ACTION, DEFAULT_PIC_PRIMARY } from '../../utils/consts';
+import { STORAGE_KEY, COLLECTION, OBJECT_NOT_FOUND, ACTION, DEFAULT_PIC_PRIMARY, DEFAULT_PIC_WHITE } from '../../utils/consts';
 import { User } from '../../models/user';
 import { Photo } from '../../models/photo';
 import { MediaProvider } from '../../providers/media/media';
@@ -157,7 +157,7 @@ export class ProfilePage {
   }
 
   getProfilePicture(): string {
-    return this.profile && this.profile.profilePic ? this.profile.profilePic : DEFAULT_PIC_PRIMARY;
+    return this.profile && this.profile.profilePic ? this.profile.profilePic : DEFAULT_PIC_WHITE;
   }
 
   capitalizeFirstLetter(str): string {

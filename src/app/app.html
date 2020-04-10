@@ -28,13 +28,14 @@
         <i class="fa fa-cog"></i>
           Settings
       </ion-item>
-      <ion-item menuClose ion-item icon-left (click)="presentLogoutActionSheet()">
-        <ion-icon class="dark" name="log-out"></ion-icon>
-          Logout
-      </ion-item> 
     </ion-list>
 
-    <!-- <div class="wave"></div> -->
+    <ion-footer>
+      <button ion-button block clear icon-start  menuClose (click)="presentLogoutActionSheet()">
+        <ion-icon class="dark" name="log-out"></ion-icon>
+        Logout
+      </button> 
+    </ion-footer>
   </ion-content>
  
 </ion-menu>
