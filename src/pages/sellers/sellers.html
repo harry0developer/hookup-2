@@ -1,76 +1,81 @@
 <ion-header>
-  <ion-navbar color="white"> 
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+    <ion-navbar color="white">
+        <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-buttons end>
-      <button ion-button ion-only (click)="filterUsers()">
-        <ion-icon name="funnel"></ion-icon>
-      </button>
-    </ion-buttons>
-    <div class="allow-location animated slideInDown" *ngIf="!locationAccess?.allowed"> 
-      <i class="fa fa-location-arrow" item-start></i>
-      {{locationAccess?.msg}}
+        <ion-buttons end>
+            <button ion-button ion-only (click)="filterUsers()">
+            <ion-icon name="funnel"></ion-icon>
+        </button>
+        </ion-buttons>
+        <div class="allow-location animated slideInDown" *ngIf="!locationAccess?.allowed">
+            <i class="fa fa-map-marker-alt" item-start></i> {{locationAccess?.msg}}
+        </div>
+
+        <div class="allow-location animated slideInDown" *ngIf="!isVerified()">
+            Your account is not verified
+            <button class="close-button" ion-button clear icon-only (click)="dismis()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </div>
+
+    </ion-navbar>
+    <div class="sub-header">
+        <h2 class="sub-header__title">Sellers</h2>
     </div>
-  </ion-navbar> 
-  <div class="sub-header">
-    <h2 class="sub-header__title">Sellers</h2>
-  </div>  
-</ion-header> 
+</ion-header>
 
-<ion-content padding-top >   
-  <ion-list class="main-card-skeleton" *ngIf="isLoading">
-    <ion-grid> 
-      <ion-row>
-        <ion-col col-6 *ngFor="let user of [1,2,3,4,5]">
-          <ion-card> 
-            <ion-item >
-              <ion-avatar item-start>
-                <skeleton-item class="avatar" height="50px" width="50px" border-radius="50%"></skeleton-item>
-              </ion-avatar>
-              <div class="info">
-                <skeleton-item height="8px" width="80%" ></skeleton-item> 
-                <skeleton-item height="6px" width="50%" ></skeleton-item> 
-              </div>
-            </ion-item>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-list>
+<ion-content padding-top>
+    <ion-list class="main-card-skeleton" *ngIf="isLoading">
+        <ion-grid>
+            <ion-row>
+                <ion-col col-6 *ngFor="let user of [1,2,3,4,5]">
+                    <ion-card>
+                        <ion-item>
+                            <ion-avatar item-start>
+                                <skeleton-item class="avatar" height="50px" width="50px" border-radius="50%"></skeleton-item>
+                            </ion-avatar>
+                            <div class="info">
+                                <skeleton-item height="8px" width="80%"></skeleton-item>
+                                <skeleton-item height="6px" width="50%"></skeleton-item>
+                            </div>
+                        </ion-item>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-list>
 
-  <ion-list class="main-card">
-    <ion-grid> 
-      <ion-row *ngIf="!isLoading && sellers" [@listAnimation]="sellers.length">
-        <ion-col col-6 *ngFor="let user of sellers">
-          <ion-card (tap)="viewProfile(user)"> 
-            <ion-item>
-              <ion-avatar>
-                <img class="animated slideInDown profile-picture" [src]="getProfilePicture(user)">
-              </ion-avatar>
-              <div class="info">
-                <h2 text-wrap>
-                  {{capitalizeFirstLetter(user?.nickname)}} <span *ngIf="user.age == 23">  Van Der Eisteners </span> - 
-                  <ion-badge>{{user?.age}}</ion-badge>
-                </h2>
-                <p [hidden]="!locationAccess.allowed">
-                  <span class="distance">
-                    <i class="fa fa-map-pin" item-start></i>
-                    {{getUserDistance(user)}} 
-                  </span>
-                  km away
-                </p>
-              </div>
-            </ion-item>
-            </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-list> 
-  <ion-card class="no-users-found" *ngIf="!isLoading && sellers.length < 1">
-    <ion-item text-wrap>
-      <p class="not-found">No users found. Please change the filter.</p>      
-    </ion-item>
-  </ion-card>
+    <ion-list class="main-card">
+        <ion-grid>
+            <ion-row *ngIf="!isLoading && sellers" [@listAnimation]="sellers.length">
+                <ion-col col-6 *ngFor="let user of sellers">
+                    <ion-card (tap)="viewProfile(user)">
+                        <ion-item>
+                            <ion-avatar>
+                                <img class="animated slideInDown profile-picture" [src]="getProfilePicture(user)">
+                            </ion-avatar>
+                            <div class="info">
+                                <h2 text-wrap>
+                                    {{capitalizeFirstLetter(user?.nickname)}}
+                                    <ion-badge>{{user?.age}}</ion-badge>
+                                </h2>
+                                <p [hidden]="!locationAccess.allowed">
+                                    <span class="distance">
+                                    <i class="fa fa-map-pin" item-start></i>
+                                    {{getUserDistance(user)}} 
+                                  </span> km away
+                                </p>
+                            </div>
+                        </ion-item>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-list>
+    <ion-card class="no-users-found" *ngIf="!isLoading && sellers.length < 1">
+        <ion-item text-wrap>
+            <p class="not-found">No users found. Please change the filter.</p>
+        </ion-item>
+    </ion-card>
 </ion-content>
- 

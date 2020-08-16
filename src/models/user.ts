@@ -15,8 +15,9 @@ export interface User {
     dateCreated: string;
     userType: string;
     verified?: boolean;
+    loginType: string; // 'email' | 'phonenumber'
     distance?: string;
     location: Geo;
     status: string;
     avatar: string;
-};
+}; 

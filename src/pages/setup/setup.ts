@@ -40,6 +40,7 @@ export class SetupPage {
     profilePic: '',
     location: null,
     status: '',
+    loginType: '',
     avatar: ''
   };
 

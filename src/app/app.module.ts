@@ -54,6 +54,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { OpenNativeSettings } from '@ionic-native/open-native-settings';
 import { AppVersion } from '@ionic-native/app-version';
 import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
+import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
     ReportBugPage,
     LoginPage,
     SettingsPage,
+    EditProfilePage
   ],
   imports: [
     BrowserModule,
@@ -116,6 +118,7 @@ import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
     ReportBugPage,
     LoginPage,
     SettingsPage,
+    EditProfilePage
   ],
   providers: [
     StatusBar,

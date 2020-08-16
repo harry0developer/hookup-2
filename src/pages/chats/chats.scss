@@ -1,55 +1,45 @@
-page-chats { 
+page-chats {
     .content {
-        background-color: $primary;
-    } 
+        background-color: $light;
+    }
     .toolbar .searchbar-ios .searchbar-input {
-        background-color:$light;
+        background-color: $light;
         padding: 20px 30px;
     }
-
     .searchbar-ios .searchbar-search-icon {
         top: 14px;
     }
-
-	.user {  
+    .user {
         ion-item {
             height: 65px;
         }
-        ion-avatar img{
+        ion-avatar img {
             width: 40px;
-			height: 40px;
-			border: 2px solid $primary !important;
-		} 
-		
+            height: 40px;
+            border: 2px solid $primary !important;
+        }
         .name {
             text-align: left;
             font-size: 1em;
-        } 
+        }
     }
-
-
-	skeleton-item.sk-item-end {
-		div:first-child {
-			float: right;
-		}
+    skeleton-item.sk-item-end {
+        div:first-child {
+            float: right;
+        }
     }
-    
     skeleton-item.avatar {
         div {
-
             border-radius: 100%;
         }
-	}
-	
-	.skeleton-top {
-		margin-top: 10%;
-		margin-bottom: 20%;
     }
-    
+    .skeleton-top {
+        margin-top: 10%;
+        margin-bottom: 20%;
+    }
     .not-found {
         text-align: center;
-    } 
-
+    }
     ion-spinner {
         width: 100%;
         text-align: center;

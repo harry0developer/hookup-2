@@ -1,9 +1,7 @@
-page-sellers {  
-
-    .content{
+page-sellers {
+    .content {
         background-color: $primary;
     }
-    
     .grid {
         padding: 0;
         margin: 0;
@@ -15,23 +13,23 @@ page-sellers {
             }
         }
     }
-    .item-ios[item-start], .item-md[item-start]{
+    .item-ios[item-start],
+    .item-md[item-start] {
         margin: 8px 2px 8px 0;
     }
-    
     .main-card {
         padding: 4px;
-        ion-avatar img{
+        ion-avatar img {
             border: 2px solid $primary;
             width: 40px;
             height: 40px;
         }
         ion-col {
             padding: 0;
-            ion-card { 
+            ion-card {
                 text-align: left;
                 border-radius: 8px !important;
-                height: 140px;
+                height: 120px;
                 ion-item {
                     background-color: transparent;
                 }
@@ -48,13 +46,13 @@ page-sellers {
                     font-size: 12px;
                     color: $black;
                 }
-                .item-md [item-start], .item-ios [item-start] {
+                .item-md [item-start],
+                .item-ios [item-start] {
                     margin: 6px 2px 9px 0;
                 }
             }
         }
-    } 
-
+    }
     .no-users-found {
         height: 100px;
         ion-label {
@@ -62,15 +60,13 @@ page-sellers {
         }
         .not-found {
             text-align: center;
-        } 
+        }
     }
-
     skeleton-item.avatar div {
         border-radius: 50%;
         width: 50px;
         height: 50px;
     }
-
     .main-card-skeleton {
         ion-item {
             display: block
@@ -82,7 +78,6 @@ page-sellers {
             padding: 0 !important;
         }
     }
-
     .card-md {
         width: calc(100% - 10px) !important;
     }
@@ -90,19 +85,35 @@ page-sellers {
         font-weight: bold;
         color: $primary;
     }
- 
     // ion-badge {
     //     font-size: 12px;
     //     background-color: $primary !important;
     // }
-
     .allow-location {
-        padding: 20px;
-        background: $primary;
-        color: $white;
+        z-index: 99999;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.95);
+        color: #ff0707;
         text-align: center;
+        -webkit-box-shadow: 0px 3px 8px -4px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 3px 8px -4px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 3px 8px -4px rgba(0, 0, 0, 0.75);
         i {
             padding-right: 10px;
         }
+    }
+    .close-button {
+        position: absolute;
+        right: 0;
+    }
+    .close-button.button-md {
+        top: 0;
+    }
+    .close-button.button-ios {
+        top: -5px;
     }
 }

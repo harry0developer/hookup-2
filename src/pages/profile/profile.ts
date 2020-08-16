@@ -6,10 +6,12 @@ import { User } from '../../models/user';
 import { Photo } from '../../models/photo';
 import { MediaProvider } from '../../providers/media/media';
 import { FeedbackProvider } from '../../providers/feedback/feedback';
-import firebase from 'firebase';
+import * as firebase from 'firebase';
 import { FirebaseApiProvider } from '../../providers/firebase-api/firebase-api';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { PreviewPage } from '../preview/preview';
+import { AuthProvider } from '../../providers/auth/auth';
+import { EditProfilePage } from '../edit-profile/edit-profile';
 
 
 @IonicPage()
@@ -26,10 +28,13 @@ export class ProfilePage {
   imagesRef: string;
   isLoading: boolean;
   active: any;
+
+  rootRef = firebase.database();
   constructor(
     public navCtrl: NavController,
     public dataProvider: DataProvider,
     public mediaProvider: MediaProvider,
+    public authProvider: AuthProvider,
     public feedbackProvider: FeedbackProvider,
     public firebaseApiProvider: FirebaseApiProvider,
     public afDB: AngularFireDatabase,
@@ -43,7 +48,13 @@ export class ProfilePage {
     this.imagesRef = `${COLLECTION.images}/${this.profile.uid}`;
     this.getAllImages();
     this.dataProvider.getAllFromCollection(COLLECTION.images).subscribe(r => {
-      console.log(r);
+      // console.log(r);
+    }); 
+     var root =  this.rootRef.ref().child('users/'+ this.profile.uid);
+
+    root.on('value', snap => {
+      console.log(snap.val());
+      this.profile = snap.val();
     });
   }
 
@@ -53,11 +64,16 @@ export class ProfilePage {
   }
 
   updateUserProp(ref: string, uid: string, keyValue) {
-    this.firebaseApiProvider.updateItem(ref, uid, keyValue).then(() => {
-      console.log('Updated ', uid);
+    this.firebaseApiProvider.updateItem(ref, uid, keyValue).then((a) => {
+      console.log('Updated ', uid, a);
     }).catch(err => {
       console.log(err);
     })
+  }
+
+
+  update(collection: string, uid:string, obj: Object) {
+    return this.rootRef.ref(`${collection}/`).child(uid).update(obj);
   }
 
   previewImage(img) {
@@ -117,12 +133,16 @@ export class ProfilePage {
   }
 
   selectPhoto() {
-    this.mediaProvider.selectPhoto().then(imageData => {
-      const selectedPhoto = 'data:image/jpeg;base64,' + imageData;
-      this.uploadPhotoAndUpdateUserDatabase(selectedPhoto);
-    }, error => {
-      this.feedbackProvider.presentToast('An error occured uploading the photo');
-    });
+    if(this.profile.verified) {
+      this.mediaProvider.selectPhoto().then(imageData => {
+        const selectedPhoto = 'data:image/jpeg;base64,' + imageData;
+        this.uploadPhotoAndUpdateUserDatabase(selectedPhoto);
+      }, error => {
+        this.feedbackProvider.presentToast('An error occured uploading the photo');
+      });
+    } else {
+      this.feedbackProvider.presentAlert("Account not verified", "Please verify your account before you can upload images");
+    }
   }
 
   private uploadPhotoAndUpdateUserDatabase(image): any {
@@ -150,6 +170,37 @@ export class ProfilePage {
       this.feedbackProvider.presentToast('An error occured uploading the photo');
     });
 
+  }
+
+  editProfile() {
+    let modal = this.modalCtrl.create(EditProfilePage, { user: this.profile});
+    modal.onDidDismiss(data => {
+      if (data) {
+        console.log(data);
+        if(data.gender) {
+          this.update(COLLECTION.users, this.profile.uid, {gender: data.gender}).then(r => {
+            console.log(r);
+          }).catch(err => {
+            console.log(err);
+          })
+        }
+         if(data.race) {
+         this.update(COLLECTION.users, this.profile.uid, {race: data.race}).then(r => {
+           console.log(r);
+         }).catch(err => {
+           console.log(err);
+         })
+        }
+         if(data.bodyType) {
+         this.update(COLLECTION.users, this.profile.uid, {bodyType: data.bodyType}).then(r => {
+           console.log(r);
+         }).catch(err => {
+           console.log(err);
+         })
+        }
+      }
+    });
+    modal.present();
   }
 
   getDefaultProfilePic(): string {

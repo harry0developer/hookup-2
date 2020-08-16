@@ -35,7 +35,7 @@ export class ChatPage {
 
   ionViewDidLoad() {
     this.isLoading = true;
-    this.feedbackProvider.presentLoading();
+    // this.feedbackProvider.presentLoading();
     this.profile = this.firebaseApiProvider.getLoggedInUser();
     this.person = this.navParams.get('user');
     if (this.person.uid) {
@@ -48,7 +48,7 @@ export class ChatPage {
           this.scrollToEnd();
         });
       });
-      this.feedbackProvider.dismissLoading();
+      // this.feedbackProvider.dismissLoading();
     }
   }
 

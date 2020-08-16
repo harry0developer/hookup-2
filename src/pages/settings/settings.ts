@@ -7,7 +7,7 @@ import { FirebaseApiProvider } from '../../providers/firebase-api/firebase-api';
 import { User } from '../../models/user';
 import { TermsPage } from '../terms/terms';
 import { ReportBugPage } from '../report-bug/report-bug';
-import { STORAGE_KEY, COLLECTION, STATUS } from '../../utils/consts';
+import { STORAGE_KEY, COLLECTION, STATUS, LOGIN_TYPE } from '../../utils/consts';
 import { AppVersion } from '@ionic-native/app-version';
 import { OpenNativeSettings } from '@ionic-native/open-native-settings';
 
@@ -116,6 +116,14 @@ export class SettingsPage {
 
   showTermsAndConditions() {
     this.navCtrl.push(TermsPage);
+  }
+
+  verifyAccount() {
+    this.authProvider.sendEmailVerification().then(r => {
+      this.feedbackProvider.presentAlert("Account verification", "A verification code has been sent to "+this.profile.email);
+    }).catch(() => {
+      this.feedbackProvider.presentErrorAlert("Verification failed", "Oops something went wrong, please try again");
+    });
   }
 
   logout() {

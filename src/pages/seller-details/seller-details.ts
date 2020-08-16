@@ -121,7 +121,11 @@ export class SellerDetailsPage {
   }
 
   openChats(user) {
-    this.navCtrl.push(ChatPage, { user });
+    if(!this.authProvider.isUserVerified()) {
+      this.feedbackProvider.presentAlert("Account not Verified", "Please verify your account before you can chat with "+ this.user.nickname);
+    } else {
+      this.navCtrl.push(ChatPage, { user });
+    }
   }
 
   requestUser(user) {

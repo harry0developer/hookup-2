@@ -1,21 +1,21 @@
 <ion-header></ion-header>
 
 <ion-content>
-  <div class="brand">
-    <img src="assets/imgs/logo-white.svg"class="logo">
-  </div>
-
-  <div class="buttons-group"> 
-    <button ion-button small round [disabled]="!readTCsAndCs" (click)="presentLoginActionSheet()"> Login</button>
-    <button ion-button small round [disabled]="!readTCsAndCs" (click)="presentSignupActionSheet()"> signup</button>
-    <div class="terms">
-      <ion-item text-wrap> 
-        <ion-label>By continuing in you agree to our
-          <button ion-button small clear (click)="showTermsAndConditions()"> terms and conditions & policies</button>
-        </ion-label>
-        <ion-checkbox checked="true" (ionChange)="getStatus($event)"></ion-checkbox>
-      </ion-item>
+    <div class="brand">
+        <img src="assets/imgs/logo-white.svg" class="logo">
     </div>
 
-  </div>
+    <div class="buttons-group">
+        <button ion-button small round [disabled]="!readTCsAndCs" (click)="presentLoginActionSheet()"> Login</button>
+        <button ion-button small round [disabled]="!readTCsAndCs" (click)="presentSignupActionSheet()"> signup</button>
+        <div class="terms">
+            <ion-item text-wrap>
+                <ion-label>By signing in you agree to our
+                    <button ion-button small clear (click)="showTermsAndConditions()"> terms and conditions & policies</button>
+                </ion-label>
+                <ion-checkbox checked="true" (ionChange)="getStatus($event)"></ion-checkbox>
+            </ion-item>
+        </div>
+
+    </div>
 </ion-content>

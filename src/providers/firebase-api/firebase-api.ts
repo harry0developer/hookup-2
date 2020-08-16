@@ -49,10 +49,13 @@ export class FirebaseApiProvider {
   }
 
   updateItem(ref: string, uid: string, itemKeyValue: any): Promise<any> {
-    const dataRef = this.firebaseRef.ref(`/${ref}`);
-    return dataRef.child(uid).update(itemKeyValue);
-  }
+    // const dataRef = this.firebaseRef.ref(`/${ref}`);
 
+    // const r = this.firebaseRef.ref(ref + '/' + uid);
+
+    // console.log(r);
+    return this.firebaseRef.ref(ref).child(uid).update(itemKeyValue);
+  }
 
   removeItem(ref: string, key: string): Promise<any> {
     const dataRef = this.firebaseRef.ref(`/${ref}`);

@@ -1,62 +1,66 @@
 <ion-header>
-  <ion-navbar color="white"> 
-    <button ion-button menuToggle>
+    <ion-navbar color="white">
+        <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
-    </button> 
-  </ion-navbar> 
-  <div class="sub-header">
-    <h2 class="sub-header__title">Settings</h2>
-  </div>  
-</ion-header> 
+    </button>
+    </ion-navbar>
+    <div class="sub-header">
+        <h2 class="sub-header__title">Settings</h2>
+    </div>
+</ion-header>
 
 <ion-content>
-  <ion-list class="settings">
-    <ion-card>
-      <ion-item-divider> 
-        <ion-icon name="compass" item-start></ion-icon>
-        Preference
-      </ion-item-divider>
-      <ion-item (tap)="allowLocationAccess()">
-        Allow location
-        <i class="fa fa-chevron-right" item-end></i>
-      </ion-item>
-    </ion-card>
-    
-    <ion-card>
-      <ion-item-divider>
-        <ion-icon name="lock" item-start></ion-icon>
-        Account
-      </ion-item-divider>
-      <ion-item (tap)="presentDeactivateAccountActionsheet()">
-        Deactivate Account
-        <i class="fa fa-chevron-right" item-end></i>
-      </ion-item>
-    </ion-card>
+    <ion-list class="settings">
+        <ion-card>
+            <ion-item-divider>
+                <ion-icon name="compass" item-start></ion-icon>
+                Preference
+            </ion-item-divider>
+            <ion-item (tap)="allowLocationAccess()">
+                Allow location
+                <i class="fa fa-chevron-right" item-end></i>
+            </ion-item>
+        </ion-card>
 
-    <ion-card>
-      <ion-item-divider>
-        <ion-icon name="bug" item-start></ion-icon>
-        Support
-      </ion-item-divider>
-      <ion-item (tap)="reportBug()">
-        Report a problem
-        <i class="fa fa-chevron-right" item-end></i>
-      </ion-item>
-    </ion-card>
+        <ion-card>
+            <ion-item-divider>
+                <ion-icon name="lock" item-start></ion-icon>
+                Account
+            </ion-item-divider>
+            <ion-item (tap)="presentDeactivateAccountActionsheet()">
+                Deactivate Account
+                <i class="fa fa-chevron-right" item-end></i>
+            </ion-item>
+            <ion-item (tap)="verifyAccount()" *ngIf="profile && !profile.verified">
+                Verify Account
+                <i class="fa fa-chevron-right" item-end></i>
+            </ion-item>
+        </ion-card>
 
-    <ion-card>
-      <ion-item-divider>
-        <ion-icon name="document" item-start></ion-icon>
-        Privacy Policy
-      </ion-item-divider>
-      <ion-item (tap)="showTermsAndConditions()">
-        Read Ts & Cs
-        <i class="fa fa-chevron-right" item-end></i>
-      </ion-item>
-    </ion-card>
-  </ion-list> 
-  
-  <div class="version">
-    {{version}}
-  </div>
+        <ion-card>
+            <ion-item-divider>
+                <ion-icon name="bug" item-start></ion-icon>
+                Support
+            </ion-item-divider>
+            <ion-item (tap)="reportBug()">
+                Report a problem
+                <i class="fa fa-chevron-right" item-end></i>
+            </ion-item>
+        </ion-card>
+
+        <ion-card>
+            <ion-item-divider>
+                <ion-icon name="document" item-start></ion-icon>
+                Privacy Policy
+            </ion-item-divider>
+            <ion-item (tap)="showTermsAndConditions()">
+                Read Ts & Cs
+                <i class="fa fa-chevron-right" item-end></i>
+            </ion-item>
+        </ion-card>
+    </ion-list>
+
+    <div class="version">
+        {{version}}
+    </div>
 </ion-content>

@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Edit Profile</ion-title>
+        <ion-buttons end>
+            <button ion-button ion-only (click)="dismiss()">
+                Cancel
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-card>
+            <ion-item>
+                <ion-label>Gender</ion-label>
+                <ion-select [(ngModel)]="data.gender" cancelText="Cancel" okText="Ok">
+                    <ion-option value="male" selected="{{data.gender === 'male'}}">Male</ion-option>
+                    <ion-option value="female" selected="{{data.gender === 'female'}}">Female</ion-option>
+                    <ion-option value="transgender" selected="{{data.gender === 'transgender'}}">Transgender</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-card>
+
+        <ion-card>
+            <ion-item>
+                <ion-label>Race</ion-label>
+                <ion-select [(ngModel)]="data.race" cancelText="Cancel" okText="Ok">
+                    <ion-option value="black" selected="true">Black/African</ion-option>
+                    <ion-option value="coloured" selected="true">Coloured</ion-option>
+                    <ion-option value="indian" selected="true">Indian</ion-option>
+                    <ion-option value="white" selected="true">White</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-card>
+
+        <ion-card *ngIf="data.gender === 'male'">
+            <ion-item>
+                <ion-label>Body Type</ion-label>
+                <ion-select [(ngModel)]="data.bodyType" cancelText="Cancel" okText="Ok">
+                    <ion-option value="skinny" selected="{{data.bodyType === 'skinny'}}">Skinny</ion-option>
+                    <ion-option value="muscular" selected="{{data.bodyType === 'muscular'}}">Muscular</ion-option>
+                    <ion-option value="fat" selected="{{data.bodyType === 'fat'}}">Fat</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-card>
+        <ion-card *ngIf="data.gender === 'female'">
+            <ion-item>
+                <ion-label>Body Type</ion-label>
+                <ion-select [(ngModel)]="data.bodyType" cancelText="Cancel" okText="Ok">
+                    <ion-option value="skinny" selected="{{data.bodyType === 'skinny'}}">Skinny</ion-option>
+                    <ion-option value="thick" selected="{{data.bodyType === 'thick'}}">Thick</ion-option>
+                    <ion-option value="bbw" selected="{{data.bodyType === 'bbw'}}">BBW</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-card>
+
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <button ion-button block small round (click)="apply()">Save</button>
+                </ion-col>
+                <ion-col>
+                    <button ion-button block small round (click)="dismiss()">Cancel</button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-list>
+
+</ion-content>

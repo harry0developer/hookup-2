@@ -13,6 +13,11 @@ export const DATABASE = {
     images: 'images'
 }
 
+export const LOGIN_TYPE = {
+    email: 'email',
+    phone: 'phone',
+}
+
 export const USER_TYPE = {
     buyer: 'buyer',
     seller: 'seller'

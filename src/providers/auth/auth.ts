@@ -19,7 +19,7 @@ export class AuthProvider {
   }
 
 
-  sendVerificationMail() {
+  sendEmailVerification() {
     return this.afAuth.auth.currentUser.sendEmailVerification();
   }
 
@@ -96,10 +96,11 @@ export class AuthProvider {
 
   isUserVerified(): boolean {
     const auth = this.afAuth.auth;
-    return auth && auth.currentUser && auth.currentUser.emailVerified;
+    return auth.currentUser && auth.currentUser.emailVerified ;
   }
 
   getCurrentUser() {
     return this.afAuth.auth;
   }
+
 }

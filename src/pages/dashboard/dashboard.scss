@@ -1,48 +1,40 @@
 page-dashboard {
-	.top{
-		background: linear-gradient(
-			rgba(241, 241, 241, 0.60), 
-			rgba(241, 241, 241, 0.60)
-		),
-		url($bg);
-		text-align: center;
-		color: $dark;
-		padding-top: 10%;
-		border-bottom: 1px solid $white;
-		padding-bottom: 10%;
-		p{
-				margin: 5px 0 !important;
-				font-size: 1.2em;
-				padding-bottom: 10px !important;
-		}
-		h2{
-				margin: 5px 0;
-				font-size: 1.4em;
-				font-weight: bold;
-				color: $primary;
-		}
-		img{
-				border: 2px solid $primary;
-				margin: 10px 0;
-				padding: 2px;
-				width: 80px;
-				height: 80px;
-				border-radius: 100%;
-		}
-		.rating {
-			.star-icon {
-					font-size: .8em !important;
-					color: $primary !important;
-			}
-			.star-icon:before {
-					color: $primary !important;
-			}
-		}
-
-		
+    .top {
+        background: linear-gradient( rgba(241, 241, 241, 0.60), rgba(241, 241, 241, 0.60)), url($bg);
+        text-align: center;
+        color: $dark;
+        padding-top: 4%;
+        border-bottom: 1px solid $white;
+        p {
+            margin: 5px 0 !important;
+            font-size: 1.2em;
+            padding-bottom: 10px !important;
+        }
+        h2 {
+            margin: 5px 0;
+            font-size: 1.4em;
+            font-weight: bold;
+            color: $primary;
+        }
+        img {
+            border: 2px solid $primary;
+            margin: 10px 0;
+            padding: 2px;
+            width: 80px;
+            height: 80px;
+            border-radius: 100%;
+        }
+        .rating {
+            .star-icon {
+                font-size: .8em !important;
+                color: $primary !important;
+            }
+            .star-icon:before {
+                color: $primary !important;
+            }
+        }
     }
-    
-    .card-icon{
+    .card-icon {
         i {
             color: $primary;
             font-size: 2em;
@@ -50,14 +42,14 @@ page-dashboard {
         }
     }
     .summary {
-		padding: 10px 0;
-		height: 100px;
-		ion-label {
-			display: flex;
-		}
-		p {
-			font-size: .8em;
-		} 
+        padding: 10px 0;
+        height: 100px;
+        ion-label {
+            display: flex;
+        }
+        p {
+            font-size: .8em;
+        }
         h2 {
             font-size: 1.6em;
             font-weight: bold;
@@ -65,74 +57,68 @@ page-dashboard {
         .card-details {
             margin-left: 10px;
         }
-	}
-    
-	.contact-info {
-		font-size: 1em;
-		border-bottom: 1px solid $grey;
-		line-height: 2;
-		margin-bottom: 20px;
-		[col-6]:first-child {
-			text-align: left;
-		}
-		[col-6]:last-child {
-			text-align: right;
-		}
-		i {
-			color: $primary;
-			padding-right: 4px;
-			font-size: 0.9em;
-		}
-		.grid {
-			padding: 0;
-		}
-		.row {
-			padding: 10px;
-		}
-	}
-
+    }
+    .contact-info {
+        font-size: 1em;
+        border-bottom: 1px solid $grey;
+        line-height: 2;
+        margin-bottom: 20px;
+        [col-6]:first-child {
+            text-align: left;
+        }
+        [col-6]:last-child {
+            text-align: right;
+        }
+        i {
+            color: $primary;
+            padding-right: 4px;
+            font-size: 0.9em;
+        }
+        .grid {
+            padding: 0;
+        }
+        .row {
+            padding: 10px;
+        }
+    }
     .col {
         padding: 0;
     }
-
-
-	.user {
-		ion-item-divider {
-			font-weight: bold;
-		}
+    .user {
+        ion-item-divider {
+            font-weight: bold;
+            color: $white;
+            background-color: $primary;
+        }
         ion-item {
             height: 65px;
         }
-        ion-avatar img{
+        ion-avatar img {
             width: 50px;
-			height: 50px;
-			border: 2px solid $primary !important;
-		}
-		
+            height: 50px;
+            border: 2px solid $primary !important;
+        }
         i {
             color: $black;
             padding-right: 4px;
-		}
-		
+        }
         .name {
             text-align: left;
             font-size: 1em;
         }
-
         .online {
             color: green;
         }
         .offline {
-            color: $primary; 
+            color: $primary;
         }
-
-        .online, .offline {
+        .online,
+        .offline {
             font-size: .6em;
             padding-bottom: 4px;
             padding-left: 10px;
             float: right;
         }
-
         .distance {
             padding-top: 10px;
             span {
@@ -141,24 +127,17 @@ page-dashboard {
             }
         }
     }
-
-
-	skeleton-item.sk-item-end {
-		div:first-child {
-			float: right;
-		}
+    skeleton-item.sk-item-end {
+        div:first-child {
+            float: right;
+        }
     }
-    
     skeleton-item.avatar {
         div {
             border-radius: 100%;
         }
-	}
-	
-	.skeleton-top {
-		margin-bottom: 20%;
-	}
-     
-
-    
+    }
+    .skeleton-top {
+        margin-bottom: 20%;
+    }
 }

@@ -1,63 +1,63 @@
 <ion-header>
-  <ion-navbar >
-    <ion-buttons end>
-      <button ion-button icon-only clear (click)="dismiss()">
-        <ion-icon name="close"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
- 
+    <ion-navbar>
+        <ion-buttons end>
+            <button ion-button icon-only clear (click)="dismiss()">
+                  <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+
+    </ion-navbar>
+
 </ion-header>
-  
+
 <ion-content>
-  <div class="skeleton"  *ngIf="isLoading">
-    <skeleton-item height="460px"></skeleton-item>
-    <div class="content">
-      <skeleton-item class="text" height="10px" width="80px" margin="0 auto"></skeleton-item>
-      <skeleton-item class="text" height="10px" width="120px" margin="0 auto"></skeleton-item>
+    <div class="skeleton" *ngIf="isLoading">
+        <skeleton-item height="460px"></skeleton-item>
+        <div class="content">
+            <skeleton-item class="text" height="10px" width="80px" margin="0 auto"></skeleton-item>
+            <skeleton-item class="text" height="10px" width="120px" margin="0 auto"></skeleton-item>
 
-      <div class="block">
-        <skeleton-item class="text" height="10px" width="60px" ></skeleton-item>
-        <skeleton-item class="text" height="10px" width="60px" ></skeleton-item>
-        <skeleton-item class="text" height="10px" width="60px" ></skeleton-item>
-        <skeleton-item class="text" height="10px" width="60px" ></skeleton-item>
-      </div>
-    </div> 
-  </div>
+            <div class="block">
+                <skeleton-item class="text" height="10px" width="60px"></skeleton-item>
+                <skeleton-item class="text" height="10px" width="60px"></skeleton-item>
+                <skeleton-item class="text" height="10px" width="60px"></skeleton-item>
+                <skeleton-item class="text" height="10px" width="60px"></skeleton-item>
+            </div>
+        </div>
+    </div>
 
-  <div class="no-photos" *ngIf="!isLoading && !hasImages">
-    <img src="assets/imgs/no-photos.svg" alt="">
-    <p>No images</p>
-  </div> 
+    <div class="no-photos" *ngIf="!isLoading && !hasImages">
+        <img src="assets/imgs/no-photos.svg" alt="">
+        <p>No images</p>
+    </div>
 
 
-  <ion-slides pager *ngIf="!isLoading && hasImages">
-    <ion-slide *ngFor="let img of images">
-      <img [src]="img.path">  
-    </ion-slide>
-  </ion-slides>  
+    <ion-slides pager *ngIf="!isLoading && hasImages">
+        <ion-slide *ngFor="let img of images">
+            <img [src]="img.path">
+        </ion-slide>
+    </ion-slides>
 
-  <div class="profile" *ngIf="user && !isLoading">
-    <h2>{{capitalizeFirstLetter(user?.nickname)}} 
-      <!-- <ion-badge color="primary" class="age">{{user?.age}}</ion-badge> -->
-    </h2>
-    <p>
-      <span class="distance">
+    <div class="profile" *ngIf="user && !isLoading">
+        <h2>{{capitalizeFirstLetter(user?.nickname)}}
+            <!-- <ion-badge color="primary" class="age">{{user?.age}}</ion-badge> -->
+        </h2>
+        <p>
+            <span class="distance">
         <i class="fa fa-map-pin" item-start></i>
         {{getUserDistance(user)}} 
-      </span>
-      km away
-    </p>  
-    <ion-badge *ngIf="user.race">{{capitalizeFirstLetter(user.race)}}</ion-badge>
-    <ion-badge *ngIf="user.age">{{user.age}} yrs</ion-badge>
-    <ion-badge *ngIf="user.height">{{user.height}} cm</ion-badge>
-    <ion-badge *ngIf="user.bodyType">{{capitalizeFirstLetter(user.bodyType)}}</ion-badge>
-  </div>
+      </span> km away
+        </p>
+        <ion-badge *ngIf="user.race">{{capitalizeFirstLetter(user.race)}}</ion-badge>
+        <ion-badge *ngIf="user.age">{{user.age}} yrs</ion-badge>
+        <ion-badge *ngIf="user.height">{{user.height}} cm</ion-badge>
+        <ion-badge *ngIf="user.bodyType">{{capitalizeFirstLetter(user.bodyType)}}</ion-badge>
+    </div>
 
-  <ion-fab right bottom (click)="openChats(user)"  *ngIf="!isLoading">  
-    <button ion-fab>
+    <ion-fab right bottom (click)="openChats(user)" *ngIf="!isLoading">
+        <button ion-fab>
       <i class="fa fa-comment"></i>
     </button>
-  </ion-fab>
+    </ion-fab>
+
 </ion-content>
- 

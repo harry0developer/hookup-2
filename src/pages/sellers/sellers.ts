@@ -36,6 +36,8 @@ export class SellersPage {
     allowed: boolean,
     msg: string;
   };
+  isDismissed: boolean = false;
+  verified: boolean;
   constructor(
     public navCtrl: NavController,
     public dataProvider: DataProvider,
@@ -48,6 +50,9 @@ export class SellersPage {
   }
 
   ionViewDidLoad() {
+    this.verified = this.authProvider.isUserVerified();
+    console.log(this.verified);
+    
     this.profile = this.firebaseApiProvider.getLoggedInUser();
     this.filter = this.firebaseApiProvider.getItemFromLocalStorage(STORAGE_KEY.filter);
     if (!this.filter || !this.filter.age) {
@@ -66,6 +71,10 @@ export class SellersPage {
     this.getSellers();
   }
 
+
+  isVerified() : boolean{
+    return !!this.verified;
+  }
 
   getSellers() {
     const ref = this.firebaseApiProvider.firebaseRef.ref(`/${COLLECTION.users}`);
@@ -158,6 +167,10 @@ export class SellersPage {
 
   capitalizeFirstLetter(str: string): string {
     return this.dataProvider.capitalizeFirstLetter(str);
+  }
+
+  dismis() {
+    this.verified = true;
   }
 
   // getUserProfile(user: User) {

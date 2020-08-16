@@ -24,6 +24,7 @@ export class DashboardPage {
   isLoading: boolean;
   messages: any[] = [];
   users: any[] = [];
+  profilePic: string = '';
   firstTimeLogin;
   chatRef = firebase.database().ref(COLLECTION.chats);
   constructor(
@@ -41,6 +42,8 @@ export class DashboardPage {
   ionViewDidLoad() {
     this.profile = this.firebaseApiProvider.getLoggedInUser();
     this.isLoading = true;
+
+    this.profilePic = this.profile && !!this.profile.profilePic === true ? this.profile.profilePic : DEFAULT_PIC_PRIMARY;
 
     this.chatRef.child(this.profile.uid).on('value', snap => {
       this.zone.run(() => {
@@ -73,9 +76,10 @@ export class DashboardPage {
     this.navCtrl.push(ChatPage, { user });
   }
 
-  getProfilePicture(): string {
-    return this.profile && this.profile.profilePic ? this.profile.profilePic : DEFAULT_PIC_PRIMARY;
+  getUserProfilePicture(user): string {
+    return user && !!user.profilePic  ? user.profilePic : DEFAULT_PIC_PRIMARY;
   }
+ 
 
   capitalizeFirstLetter(str: string): string {
     return this.dataProvider.capitalizeFirstLetter(str);
