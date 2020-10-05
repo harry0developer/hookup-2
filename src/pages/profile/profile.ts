@@ -28,7 +28,7 @@ export class ProfilePage {
   imagesRef: string;
   isLoading: boolean;
   active: any;
-
+  verified: boolean;
   rootRef = firebase.database();
   constructor(
     public navCtrl: NavController,
@@ -44,18 +44,21 @@ export class ProfilePage {
 
   ionViewDidLoad() {
     this.profile = this.firebaseApiProvider.getLoggedInUser();
-
+    const loggedInUser = this.firebaseApiProvider.afAuth.authState;
+    loggedInUser.subscribe(user => {
+     this.verified =  user && user.emailVerified ? user.emailVerified : false;
+    });
     this.imagesRef = `${COLLECTION.images}/${this.profile.uid}`;
     this.getAllImages();
     this.dataProvider.getAllFromCollection(COLLECTION.images).subscribe(r => {
       // console.log(r);
     }); 
-     var root =  this.rootRef.ref().child('users/'+ this.profile.uid);
+    const root =  this.rootRef.ref().child('users/'+ this.profile.uid);
 
     root.on('value', snap => {
-      console.log(snap.val());
       this.profile = snap.val();
     });
+ 
   }
 
 
@@ -133,7 +136,7 @@ export class ProfilePage {
   }
 
   selectPhoto() {
-    if(this.profile.verified) {
+    if(this.verified) {
       this.mediaProvider.selectPhoto().then(imageData => {
         const selectedPhoto = 'data:image/jpeg;base64,' + imageData;
         this.uploadPhotoAndUpdateUserDatabase(selectedPhoto);
@@ -179,21 +182,21 @@ export class ProfilePage {
         console.log(data);
         if(data.gender) {
           this.update(COLLECTION.users, this.profile.uid, {gender: data.gender}).then(r => {
-            console.log(r);
+            console.log("Gender updated");
           }).catch(err => {
             console.log(err);
           })
         }
          if(data.race) {
          this.update(COLLECTION.users, this.profile.uid, {race: data.race}).then(r => {
-           console.log(r);
+           console.log("Race updated");
          }).catch(err => {
            console.log(err);
          })
         }
          if(data.bodyType) {
          this.update(COLLECTION.users, this.profile.uid, {bodyType: data.bodyType}).then(r => {
-           console.log(r);
+           console.log("Body type updated");
          }).catch(err => {
            console.log(err);
          })

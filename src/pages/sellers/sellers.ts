@@ -13,8 +13,7 @@ import { bounceIn } from '../../utils/animations';
 import { FirebaseApiProvider } from '../../providers/firebase-api/firebase-api';
 import { FilterPage } from '../filter/filter';
 import { Filter } from '../../models/filter';
-import firebase from 'firebase';
-
+import * as firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -37,7 +36,9 @@ export class SellersPage {
     msg: string;
   };
   isDismissed: boolean = false;
-  verified: boolean;
+  verified: boolean = true;
+
+  rootRef = firebase.database();
   constructor(
     public navCtrl: NavController,
     public dataProvider: DataProvider,
@@ -50,14 +51,19 @@ export class SellersPage {
   }
 
   ionViewDidLoad() {
-    this.verified = this.authProvider.isUserVerified();
-    console.log(this.verified);
-    
+    const loggedInUser = this.firebaseApiProvider.afAuth.authState;
+    loggedInUser.subscribe(user => {
+     this.verified =  user && user.emailVerified ? user.emailVerified : false; 
+    });
+
     this.profile = this.firebaseApiProvider.getLoggedInUser();
+    
+
+
     this.filter = this.firebaseApiProvider.getItemFromLocalStorage(STORAGE_KEY.filter);
     if (!this.filter || !this.filter.age) {
       this.filter = {
-        distance: 100,
+        distance: 0,
         age: 99,
         race: 'all'
       };
@@ -82,7 +88,7 @@ export class SellersPage {
       this.zone.run(() => {
         const users = this.firebaseApiProvider.convertObjectToArray(snap.val());
         const sellers = users.filter(u => u.userType === USER_TYPE.seller);
-        const unOrderedSellers = this.calculateUserDistance(sellers);
+        const unOrderedSellers = this.calculateUserDistance(sellers);        
         this.sellers = this.filterSellers(unOrderedSellers);
         this.isLoading = false;
       });
@@ -98,8 +104,14 @@ export class SellersPage {
   }
 
   calculateUserDistance(users: User[]): User[] {
+    console.log(users);
+    
+    
     if (users && users.length > 0 && this.profile.location && this.profile.location.lat && this.profile.location.lng) {
-      const userz: User[] = this.dataProvider.getLocationFromGeo(users, this.profile);
+      let userz: User[] = this.dataProvider.getLocationFromGeo(users, this.profile);
+      userz = userz.filter(user => user.distance >= this.filter.distance);
+      console.log(this.filter);
+      
       return userz;
     }
     return users;
@@ -117,7 +129,7 @@ export class SellersPage {
   }
 
   getUserDistance(user: User): string {
-    return user.distance && user.distance !== '-999' ? user.distance.toString() : 'unknown';
+    return user.distance && user.distance !== -999 ? user.distance.toString() : 'unknown';
   }
 
   viewProfile(user) {
@@ -171,6 +183,14 @@ export class SellersPage {
 
   dismis() {
     this.verified = true;
+  }
+
+  dismissLocation() {
+    
+    this.locationAccess = {
+      allowed : true,
+      msg: ''
+    }
   }
 
   // getUserProfile(user: User) {

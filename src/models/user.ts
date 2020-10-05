@@ -16,7 +16,7 @@ export interface User {
     userType: string;
     verified?: boolean;
     loginType: string; // 'email' | 'phonenumber'
-    distance?: string;
+    distance?: number;
     location: Geo;
     status: string;
     avatar: string;

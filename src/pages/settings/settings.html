@@ -31,7 +31,7 @@
                 Deactivate Account
                 <i class="fa fa-chevron-right" item-end></i>
             </ion-item>
-            <ion-item (tap)="verifyAccount()" *ngIf="profile && !profile.verified">
+            <ion-item (tap)="verifyAccount()" *ngIf="profile && !isVerified">
                 Verify Account
                 <i class="fa fa-chevron-right" item-end></i>
             </ion-item>

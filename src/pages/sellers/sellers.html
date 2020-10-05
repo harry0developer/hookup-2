@@ -5,19 +5,10 @@
     </button>
         <ion-buttons end>
             <button ion-button ion-only (click)="filterUsers()">
-            <ion-icon name="funnel"></ion-icon>
-        </button>
-        </ion-buttons>
-        <div class="allow-location animated slideInDown" *ngIf="!locationAccess?.allowed">
-            <i class="fa fa-map-marker-alt" item-start></i> {{locationAccess?.msg}}
-        </div>
-
-        <div class="allow-location animated slideInDown" *ngIf="!isVerified()">
-            Your account is not verified
-            <button class="close-button" ion-button clear icon-only (click)="dismis()">
-                <ion-icon name="close"></ion-icon>
+                <ion-icon name="funnel"></ion-icon>
             </button>
-        </div>
+        </ion-buttons>
+
 
     </ion-navbar>
     <div class="sub-header">
@@ -79,3 +70,19 @@
         </ion-item>
     </ion-card>
 </ion-content>
+
+<ion-footer>
+    <div class="extra-info animated slideInUp" *ngIf="!locationAccess?.allowed">
+        <i class="fa fa-map-marker-alt" item-start></i> {{locationAccess?.msg}}
+        <button class="close-button" ion-button clear icon-only (click)="dismissLocation()">
+            <ion-icon name="close"></ion-icon>
+        </button>
+    </div>
+
+    <div class="extra-info animated slideInUp" *ngIf="!isVerified()">
+        <i class="fa fa-lock" item-start></i> Your account is not verified
+        <button class="close-button" ion-button clear icon-only (click)="dismis()">
+            <ion-icon name="close"></ion-icon>
+        </button>
+    </div>
+</ion-footer>

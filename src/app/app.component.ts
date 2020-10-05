@@ -16,6 +16,8 @@ import { AuthProvider } from '../providers/auth/auth';
 import { ChatsPage } from '../pages/chats/chats';
 import { SettingsPage } from '../pages/settings/settings';
 import { itemSlideIn } from '../utils/animations';
+import { FirebaseApiProvider } from '../providers/firebase-api/firebase-api';
+import * as firebase from 'firebase';
 
 @Component({
   templateUrl: 'app.html'
@@ -37,6 +39,7 @@ export class MyApp {
     public modalCtrl: ModalController,
     public ionEvents: Events,
     public actionSheetCtrl: ActionSheetController,
+    public firebaseApiProvider: FirebaseApiProvider,
     public splashScreen: SplashScreen) {
     this.initializeApp();
 
@@ -49,6 +52,8 @@ export class MyApp {
     }
   }
 
+  rootRef = firebase.database();
+
   initializeApp() {
     this.platform.ready().then(() => {
       this.splashScreen.hide();
@@ -59,10 +64,18 @@ export class MyApp {
       if (a === 0) {
         this.openIntroPage();
       }
+      
+      console.log(this.profile);
+      
       this.profile = this.dataProvider.getItemFromLocalStorage(STORAGE_KEY.user);
-      this.ionEvents.subscribe(EVENTS.loggedIn, (user) => {
-        this.profile = user;
-      });
+      if(this.profile) {
+        const root =  this.rootRef.ref().child('users/'+ this.profile.uid);
+        root.on('value', snap => {
+          this.profile = snap.val();
+        });
+      }
+   
+      
       this.network.onchange().subscribe(connection => {
         if (connection.type.toLowerCase() === NETWORK.offline) {
           this.handleNetworkError();
@@ -111,6 +124,11 @@ export class MyApp {
     });
   }
 
+  refresh() {
+    this.profile = this.dataProvider.getItemFromLocalStorage(STORAGE_KEY.user);
+    console.log(this.profile);
+    
+  }
   presentLogoutActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'You are about to Logout',

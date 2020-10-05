@@ -1,8 +1,23 @@
 <ion-header>
     <ion-navbar color="white">
         <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+        <ion-icon name="menu"></ion-icon>
     </button>
+
+        <div class="allow-location animated slideInDown" *ngIf="!locationAccess?.allowed">
+            <i class="fa fa-map-marker-alt" item-start></i> {{locationAccess?.msg}}
+            <button class="close-button" ion-button clear icon-only (click)="dismissLocation()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </div>
+
+        <div class="allow-location animated slideInDown" *ngIf="verified">
+            <i class="fa fa-lock" item-start></i> Your account is not verified
+            <button class="close-button" ion-button clear icon-only (click)="dismis()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </div>
+
     </ion-navbar>
     <div class="sub-header">
         <h2 class="sub-header__title">Dashboard</h2>

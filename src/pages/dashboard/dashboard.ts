@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { User } from '../../models/user';
 import { AuthProvider } from '../../providers/auth/auth';
 import { DataProvider } from '../../providers/data/data';
-import { COLLECTION, DEFAULT_PIC_PRIMARY } from '../../utils/consts';
+import { COLLECTION, DEFAULT_PIC_PRIMARY, MESSAGES } from '../../utils/consts';
 import { ChatPage } from '../chat/chat';
 import { bounceIn } from '../../utils/animations';
 import { FirebaseApiProvider } from '../../providers/firebase-api/firebase-api';
@@ -27,6 +27,15 @@ export class DashboardPage {
   profilePic: string = '';
   firstTimeLogin;
   chatRef = firebase.database().ref(COLLECTION.chats);
+  verified: boolean;
+
+  rootRef = firebase.database();
+
+  locationAccess: {
+    allowed: boolean,
+    msg: string;
+  };
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -43,22 +52,45 @@ export class DashboardPage {
     this.profile = this.firebaseApiProvider.getLoggedInUser();
     this.isLoading = true;
 
-    this.profilePic = this.profile && !!this.profile.profilePic === true ? this.profile.profilePic : DEFAULT_PIC_PRIMARY;
+    this.firstTimeLogin = this.navParams.get("firstTimeLogin");
 
+    console.log(!!this.firstTimeLogin);
+    
+
+    this.profilePic = this.profile && !!this.profile.profilePic === true ? this.profile.profilePic : DEFAULT_PIC_PRIMARY;
+    
+    const loggedInUser = this.firebaseApiProvider.afAuth.authState;
+    
+    loggedInUser.subscribe(user => {
+     this.verified = user && user.emailVerified ? user.emailVerified : false;
+    });
+    
+    this.locationAccess = {
+      allowed: this.profile.location && this.profile.location.lat && this.profile.location.lat ? true : false,
+      msg: MESSAGES.locationAccessError
+    };
+    
     this.chatRef.child(this.profile.uid).on('value', snap => {
       this.zone.run(() => {
-        let user;
-        snap.forEach(s => {
-          user = Object.entries(s.val())[0][1];
-          this.getUserById(user.from);
-        });
+      if(!snap.val()) {
+        this.users = [];
+        this.isLoading = false;
+        console.log(this.profile);
+        console.log(this.isLoading);
+      } else {
+          let user;
+          snap.forEach(s => {
+            user = Object.entries(s.val())[0][1];
+            this.getUserById(user.from);
+          });
+        }
       });
     });
-
   }
 
   getUserById(id) {
     this.firebaseApiProvider.getItem(COLLECTION.users, id).then(user => {
+      console.log(user);
       this.zone.run(() => {
         this.users = [];
         firebase.database().ref(COLLECTION.users).child(id).once('value', snap => {
@@ -83,6 +115,18 @@ export class DashboardPage {
 
   capitalizeFirstLetter(str: string): string {
     return this.dataProvider.capitalizeFirstLetter(str);
+  }
+
+  dismis() {
+    this.verified = true;
+  }
+
+  dismissLocation() {
+    
+    this.locationAccess = {
+      allowed : true,
+      msg: ''
+    }
   }
 
 }

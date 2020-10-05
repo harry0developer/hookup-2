@@ -1,43 +1,43 @@
+<ion-menu [content]="content" persistent="true">
+    <ion-content class="user-profile">
+        <div *ngIf="profile" class="profile">
+            <img class="profile-image animated slideInDown profile-picture" [src]="getProfilePicture()">
+            <h2>{{profile.nickname}}</h2>
+            <p>{{profile.email}}</p>
+        </div>
+        <div class="header-wave"></div>
+        <ion-list *ngIf="profile" class="menu">
+            <ion-item menuClose ion-item icon-left *ngIf="!isSeller()" (click)="nav.setRoot(pages.sellersPage)">
+                <i class="fa fa-th-list"></i> Sellers
+            </ion-item>
+            <ion-item menuClose ion-item icon-left *ngIf="isSeller()" (click)="nav.setRoot(pages.dashboardPage)">
+                <i class="fa fa-briefcase"></i> Dashboard
+            </ion-item>
+            <ion-item menuClose ion-item icon-left (click)="nav.setRoot(pages.chatsPage)">
+                <i class="fa fa-comment"></i> Chats
+            </ion-item>
+            <ion-item menuClose ion-item icon-left (click)="nav.setRoot(pages.profilePage)">
+                <i class="fa fa-user"></i> Profile
+            </ion-item>
+            <ion-item menuClose ion-item icon-left (click)="nav.setRoot(pages.settingsPage)">
+                <i class="fa fa-cog"></i> Settings
+            </ion-item>
+        </ion-list>
 
-<ion-menu [content]="content"  persistent="true" >
-  <ion-content class="user-profile">
-    <div *ngIf="profile" class="profile">
-      <img class="profile-image animated slideInDown profile-picture" [src]="getProfilePicture()">
-      <h2>{{profile.nickname}}</h2>
-      <p>{{profile.email}}</p>
-    </div>
-    <div class="header-wave"></div>
-    <ion-list *ngIf="profile" class="menu">
-      <ion-item menuClose ion-item icon-left *ngIf="!isSeller()" (click)="nav.setRoot(pages.sellersPage)">
-        <i class="fa fa-th-list"></i>
-          Sellers
-      </ion-item> 
-      <ion-item menuClose ion-item icon-left *ngIf="isSeller()" (click)="nav.setRoot(pages.dashboardPage)">
-        <i class="fa fa-briefcase"></i>
-          Dashboard
-      </ion-item> 
-      <ion-item menuClose ion-item icon-left (click)="nav.setRoot(pages.chatsPage)">
-        <i class="fa fa-comment"></i>
-          Chats
-      </ion-item>
-      <ion-item menuClose ion-item icon-left (click)="nav.setRoot(pages.profilePage)">
-        <i class="fa fa-user"></i>
-          Profile
-      </ion-item> 
-      <ion-item menuClose ion-item icon-left (click)="nav.setRoot(pages.settingsPage)">
-        <i class="fa fa-cog"></i>
-          Settings
-      </ion-item>
-    </ion-list>
 
-    <ion-footer>
-      <button ion-button block clear icon-start  menuClose (click)="presentLogoutActionSheet()">
+        <div class="no-profile" *ngIf="!profile">
+            <button ion-button small round block (click)="refresh()">Refresh</button>
+        </div>
+
+
+        <ion-footer>
+            <button ion-button block clear icon-start menuClose (click)="presentLogoutActionSheet()">
         <ion-icon class="dark" name="log-out"></ion-icon>
         Logout
-      </button> 
-    </ion-footer>
-  </ion-content>
- 
+      </button>
+        </ion-footer>
+    </ion-content>
+
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->

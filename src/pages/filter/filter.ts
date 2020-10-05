@@ -11,7 +11,7 @@ import { DataProvider } from '../../providers/data/data';
 export class FilterPage {
   filter: Filter = {
     age: 0,
-    distance: 0,
+    distance: 5,
     race: 'all'
   };
   constructor(
@@ -35,7 +35,7 @@ export class FilterPage {
 
   clearFilter() {
     this.filter = {
-      distance: 100,
+      distance: 0,
       age: 99,
       race: 'all'
     };

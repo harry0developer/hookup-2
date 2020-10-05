@@ -1,49 +1,62 @@
 <ion-header>
-  <ion-navbar color="white">  
-    <ion-buttons end>
-      <button ion-button ion-only (click)="dismiss()">
+    <ion-navbar color="white">
+        <ion-buttons end>
+            <button ion-button ion-only (click)="dismiss()">
         <ion-icon name="close"></ion-icon>
       </button>
-    </ion-buttons> 
-  </ion-navbar> 
-  <div class="sub-header">
-    <h2 class="sub-header__title">Filter</h2>
-  </div>  
-</ion-header> 
+        </ion-buttons>
+    </ion-navbar>
+    <div class="sub-header">
+        <h2 class="sub-header__title">Filter</h2>
+    </div>
+</ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-card>
-      <ion-item-divider>
-        <span>Race</span> 
-        <ion-badge item-end>{{ capitalizeFirstLetter(filter?.race) }}</ion-badge>
-      </ion-item-divider>
-      <ion-item>
-        <ion-label>Select race</ion-label>
-        <ion-select [(ngModel)]="filter.race">
-          <ion-option value="all">All</ion-option>
-          <ion-option value="black">Black</ion-option>
-          <ion-option value="coloured">Coloured</ion-option>
-          <ion-option value="indian">Indian</ion-option>
-          <ion-option value="white">White</ion-option>
-        </ion-select>
-      </ion-item>
-    </ion-card>
+    <ion-list>
+        <ion-card>
+            <ion-item-divider>
+                <span>Race</span>
+                <ion-badge item-end>{{ capitalizeFirstLetter(filter?.race) }}</ion-badge>
+            </ion-item-divider>
+            <ion-item>
+                <ion-label>Select race</ion-label>
+                <ion-select [(ngModel)]="filter.race">
+                    <ion-option value="all">All</ion-option>
+                    <ion-option value="black">Black</ion-option>
+                    <ion-option value="coloured">Coloured</ion-option>
+                    <ion-option value="indian">Indian</ion-option>
+                    <ion-option value="white">White</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-card>
 
-  <ion-card>
-    <ion-item-divider>
-      <span>Age</span> 
-      <ion-badge item-end>{{filter?.age}} years</ion-badge>
-    </ion-item-divider>
-    <ion-item>
-      <ion-range [(ngModel)]="filter.age"  min="18" max="99" step="1" pin="true">
-        <ion-label range-left>18 yrs</ion-label>
-        <ion-label range-right>99 yrs</ion-label>
-      </ion-range>
-    </ion-item>
-  </ion-card>
+        <ion-card>
+            <ion-item-divider>
+                <span>Age</span>
+                <ion-badge item-end>{{filter?.age}} years</ion-badge>
+            </ion-item-divider>
+            <ion-item>
+                <ion-range [(ngModel)]="filter.age" min="18" max="99" step="1" pin="true">
+                    <ion-label range-left>18 yrs</ion-label>
+                    <ion-label range-right>99 yrs</ion-label>
+                </ion-range>
+            </ion-item>
+        </ion-card>
 
-  <!-- <ion-card>
+        <ion-card>
+            <ion-item-divider>
+                <span>Distance</span>
+                <ion-badge item-end>{{filter?.distance}} KM</ion-badge>
+            </ion-item-divider>
+            <ion-item>
+                <ion-range [(ngModel)]="filter.distance" min="0" max="500" step="1" pin="true">
+                    <ion-label range-left>0 KM</ion-label>
+                    <ion-label range-right>500 KM</ion-label>
+                </ion-range>
+            </ion-item>
+        </ion-card>
+
+        <!-- <ion-card>
     <ion-item-divider color="light">
       <span>Distance</span> 
       <ion-badge item-end>{{filter?.distance}} km</ion-badge>
@@ -55,11 +68,11 @@
       </ion-range>
     </ion-item>
   </ion-card> -->
- 
-</ion-list>
 
-  <div class="filter-controls"> 
-    <button block small ion-button round (click)="applyFilter()">Apply filter</button>
-    <button block outline small ion-button round (click)="clearFilter()">Clear filter</button>
-  </div>
+    </ion-list>
+
+    <div class="filter-controls">
+        <button block small ion-button round (click)="applyFilter()">Apply filter</button>
+        <button block outline small ion-button round (click)="clearFilter()">Clear filter</button>
+    </div>
 </ion-content>

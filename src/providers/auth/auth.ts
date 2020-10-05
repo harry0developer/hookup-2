@@ -4,11 +4,13 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { USER_TYPE, STORAGE_KEY, COLLECTION } from '../../utils/consts';
 import { auth } from 'firebase';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class AuthProvider {
 
   profile: User;
+  rootRef = firebase.database();
 
   constructor(
     public afs: AngularFirestore,
@@ -94,10 +96,7 @@ export class AuthProvider {
     return user && user.type === USER_TYPE.seller;
   }
 
-  isUserVerified(): boolean {
-    const auth = this.afAuth.auth;
-    return auth.currentUser && auth.currentUser.emailVerified ;
-  }
+ 
 
   getCurrentUser() {
     return this.afAuth.auth;

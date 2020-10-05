@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { PlacesPage } from '../places/places';
 import { DataProvider } from '../../providers/data/data';
-import { COLLECTION, USER_TYPE, STORAGE_KEY, MESSAGES, STATUS } from '../../utils/consts';
+import { COLLECTION, USER_TYPE, STORAGE_KEY, MESSAGES, STATUS, LOGIN_TYPE } from '../../utils/consts';
 import { User } from '../../models/user';
 import { Slides } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
@@ -86,6 +86,7 @@ export class SetupPage {
         this.data.password = data.password;
         this.data.uid = data.uid;
         this.data.status = STATUS.active;
+        this.data.loginType = LOGIN_TYPE.email;
         this.data.dateCreated = this.dataProvider.getDateTime();
       } else { //phone signup
         this.data.nickname = data.nickname;
@@ -93,19 +94,13 @@ export class SetupPage {
         this.data.uid = data.uid;
         this.data.status = STATUS.active;
         this.data.dateCreated = this.dataProvider.getDateTime();
+        this.data.loginType = LOGIN_TYPE.phone;
       }
     } else {
       console.log('Cannot be here');
     }
   }
 
-  addUserToRealtimeDatabase(user) {
-    this.firebaseApiProvider.addItemWithKey(COLLECTION.users, user.uid, user).then(() => {
-      this.getUserLocation();
-    }).catch(err => {
-      this.feedbackProvider.presentAlert(MESSAGES.signupFailed, 'Oops something went wrong, please try again');
-    });
-  }
 
   completeSignup() {
     this.feedbackProvider.presentLoading();
@@ -117,6 +112,15 @@ export class SetupPage {
     }).catch(err => {
       this.feedbackProvider.dismissLoading();
       console.log(err);
+    });
+  }
+
+
+  addUserToRealtimeDatabase(user) {
+    this.firebaseApiProvider.addItemWithKey(COLLECTION.users, user.uid, user).then(() => {
+      this.getUserLocation();
+    }).catch(err => {
+      this.feedbackProvider.presentAlert(MESSAGES.signupFailed, 'Oops something went wrong, please try again');
     });
   }
 
@@ -139,7 +143,7 @@ export class SetupPage {
   navigate() {
     this.dataProvider.addItemToLocalStorage(STORAGE_KEY.user, this.data);
     if (this.data.userType.toLocaleLowerCase() === USER_TYPE.seller) {
-      this.navCtrl.setRoot(DashboardPage);
+      this.navCtrl.setRoot(DashboardPage, {firstTimeLogin: true});
     } else {
       this.navCtrl.setRoot(SellersPage);
     }

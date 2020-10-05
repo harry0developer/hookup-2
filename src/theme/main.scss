@@ -8,16 +8,13 @@ $light-grey: #f1f1f1f1;
 $dark-grey: #999;
 $dark: #4d4848;
 $black: #000;
-
 $bg: '/assets/imgs/bg.png';
 $wave-header: '/assets/imgs/header-bg.svg';
-
 $primary1: #B00539;
 $primary2: #DE1B55;
 $primary3: #F67A92;
 $primary4: #C1C1C1;
 $primary5: #F6F6F6;
-
 //linear-gradient(to right top, $primary1, $primary2, $primary3, $primary3, $primary3)
 h2 {
     font-size: 1.2em;
@@ -30,22 +27,24 @@ h2 {
     font-size: .9em;
     text-align: center;
 }
- 
+
 .action-sheet-title {
     color: $black !important;
 }
 
 .action-sheet-icon {
     font-size: 1.4em !important;
-    margin-right: 4px !important; 
+    margin-right: 4px !important;
 }
 
 //   Header Menu
-.bar-button-default-md, .bar-button-default-ios {
+.bar-button-default-md,
+.bar-button-default-ios {
     color: $white;
 }
 
-.toolbar-title-md, .toolbar-title-ios {
+.toolbar-title-md,
+.toolbar-title-ios {
     color: $white;
 }
 
@@ -53,6 +52,7 @@ h2 {
     color: $primary !important;
     font-size: 1.2em !important;
 }
+
 .action-sheet-ios .action-sheet-group {
     border-radius: 10px !important;
 }
@@ -62,7 +62,7 @@ h2 {
 }
 
 .sub-header {
-    padding-bottom: 12px; 
+    padding-bottom: 12px;
     // background:  url('/assets/imgs/header-bg.svg') no-repeat;
     background: $primary;
     background-size: cover;
@@ -76,13 +76,24 @@ h2 {
     h2 {
         color: $white;
     }
-} 
+}
 
-
-// .item-ios, .item-md  {
-//     background-color:rgba($color: $primary, $alpha: .1)
-// }
+.button {
+    .button-small {
+        width: 200px;
+        padding: 20px 0;
+        margin: 20px auto;
+    }
+    &.white {
+        background: white !important;
+        color: $primary !important;
+    }
+}
 
 .header-md::after {
     display: none;
+}
+
+[icon-only] ion-icon {
+    font-size: 2em;
 }

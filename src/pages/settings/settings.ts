@@ -19,6 +19,7 @@ import { OpenNativeSettings } from '@ionic-native/open-native-settings';
 export class SettingsPage {
   profile: User;
   version;
+  isVerified: boolean;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -40,6 +41,12 @@ export class SettingsPage {
         this.version = v;
       });
     }
+
+
+    const loggedInUser = this.firebaseApiProvider.afAuth.authState;
+    loggedInUser.subscribe(user => {
+     this.isVerified =  user && user.emailVerified ? user.emailVerified : false;   
+    });
   }
 
   deactivateAccout() {

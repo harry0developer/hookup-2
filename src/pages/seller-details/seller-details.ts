@@ -28,6 +28,7 @@ export class SellerDetailsPage {
     msg: string;
   };
   images: Image[];
+  verified: boolean;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -47,7 +48,10 @@ export class SellerDetailsPage {
     this.profile = this.authProvider.getStoredUser();
     this.locationAccess = this.navParams.get('locationAccess');
     this.user = this.navParams.get('user');
-
+    const loggedInUser = this.firebaseApiProvider.afAuth.authState;
+    loggedInUser.subscribe(user => {
+     this.verified = user && user.emailVerified ? user.emailVerified : false;
+    });
     this.getUserImages(this.user);
     this.locationAccess = {
       allowed: this.user.location && this.user.location.lat && this.user.location.lat ? true : false,
@@ -91,7 +95,7 @@ export class SellerDetailsPage {
   }
 
   getUserDistance(user: User): string {
-    return user.distance && user.distance !== '-999' ? user.distance.toString() : 'unknown';
+    return user.distance && user.distance !== -999 ? user.distance.toString() : 'unknown';
   }
 
   dismiss() {
@@ -121,7 +125,7 @@ export class SellerDetailsPage {
   }
 
   openChats(user) {
-    if(!this.authProvider.isUserVerified()) {
+    if(!this.verified) {
       this.feedbackProvider.presentAlert("Account not Verified", "Please verify your account before you can chat with "+ this.user.nickname);
     } else {
       this.navCtrl.push(ChatPage, { user });
