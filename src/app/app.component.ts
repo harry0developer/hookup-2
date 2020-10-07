@@ -64,6 +64,10 @@ export class MyApp {
       if (a === 0) {
         this.openIntroPage();
       }
+
+      this.ionEvents.subscribe(EVENTS.loggedIn, u => {
+        this.profile = u;
+      });
       
       console.log(this.profile);
       
@@ -121,6 +125,7 @@ export class MyApp {
   logout() {
     this.authProvider.logout().then(() => {
       this.nav.setRoot(HomePage);
+      this.dataProvider.removeFromLocalStorage(STORAGE_KEY.user);
     });
   }
 

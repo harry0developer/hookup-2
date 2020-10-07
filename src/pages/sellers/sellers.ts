@@ -104,14 +104,9 @@ export class SellersPage {
   }
 
   calculateUserDistance(users: User[]): User[] {
-    console.log(users);
-    
-    
     if (users && users.length > 0 && this.profile.location && this.profile.location.lat && this.profile.location.lng) {
       let userz: User[] = this.dataProvider.getLocationFromGeo(users, this.profile);
       userz = userz.filter(user => user.distance >= this.filter.distance);
-      console.log(this.filter);
-      
       return userz;
     }
     return users;

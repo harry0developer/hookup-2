@@ -147,6 +147,9 @@ export class DataProvider {
     localStorage.setItem(key, JSON.stringify(data));
   }
 
+  removeFromLocalStorage(key: string) {
+    localStorage.removeItem(key);
+  }
   addItemToUserDB(collection: string, id: string, newItem: any) {
     const key = new Date().getTime().toString();
     this.getDocumentFromCollectionById(collection, id).subscribe(items => {
@@ -289,12 +292,12 @@ export class DataProvider {
             lat: user.location.lat,
             lng: user.location.lng
           };
-          user.distance = this.getDistanceBetweenPoints(
+          const dist = this.getDistanceBetweenPoints(
             myGeo,
             otherUserGeo,
             units
           ).toFixed(0);
-
+          user.distance = parseFloat(dist);
         }
       });
       return users;
@@ -325,7 +328,7 @@ export class DataProvider {
     let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     let d = R * c;
 
-    return d >= 0 ? d * this.KM : -999; //convert miles to km
+    return  d >= 0 ? d * this.KM : -999; //convert miles to km
   }
 
   toRad(x) {

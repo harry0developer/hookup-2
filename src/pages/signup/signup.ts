@@ -73,7 +73,19 @@ export class SignupPage {
       this.users = this.firebaseApiProvider.convertObjectToArray(res.val());
     }).catch(err => {
       console.log(err);
-    })
+    });
+
+    
+  }
+
+  isNicknameTaken(nickname): boolean {
+    let isTaken = false;
+    this.users.forEach(user => {
+      if(user.nickname.toLocaleLowerCase() === nickname.toLocaleLowerCase()) {
+        isTaken = true;
+      }
+    });
+    return isTaken;
   }
 
   signupWithPhoneNumber() {
@@ -83,7 +95,11 @@ export class SignupPage {
   signupWithEmailAndPassword() {
     const registeredUsers = this.users.filter(user => user.email.toLocaleLowerCase() === this.emailSignup.email.toLocaleLowerCase());
     console.log(registeredUsers);
-    if (registeredUsers && registeredUsers.length > 0) {
+
+    if(this.isNicknameTaken(this.emailSignup.nickname)) {
+      this.feedbackProvider.presentAlert('Signup failed', 'Nickname is already in use');
+    }
+    else if (registeredUsers && registeredUsers.length > 0) {
       this.feedbackProvider.presentAlert('Signup failed', 'Email address is already registered');
     } else {
       this.navCtrl.push(SetupPage, { data: this.emailSignup });

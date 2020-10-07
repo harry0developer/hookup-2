@@ -140,4 +140,15 @@ page-dashboard {
     .skeleton-top {
         margin-bottom: 20%;
     }
+    .extra-info {
+        z-index: 99999;
+        width: 100%;
+        padding: 10px;
+        background: $white;
+        color: $primary;
+        text-align: center;
+        -webkit-box-shadow: 0px 3px 8px -4px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 3px 8px -4px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 3px 8px -4px rgba(0, 0, 0, 0.75);
+    }
 }
